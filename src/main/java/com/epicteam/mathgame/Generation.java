@@ -10,7 +10,7 @@ public class Generation {
     int layoutQuestion1 = 115;
     int layoutQuestion3 = 150;
     int question2Font = 12;
-    public int layoutQuestion2Y = 266;
+    int layoutQuestion2Y = 266;
     String question1;
     String question2;
     String question3;
@@ -49,32 +49,18 @@ public class Generation {
                 numberOfExample = ran.nextInt(2) + 11;
             }
         }
-        switch (numberOfExample){
-            case 1:
-                easyEquationsEasy();
-                break;
-            case 2:
-                fraction();
-                break;
-            case 3:
-                hardEquationsEasy();
-                break;
-            case 4:
-                hardEquationsEasy1();
-                break;
-            case 5:
-                quadEquationsEasy();
-                break;
-            case 6:
-                cubicEquationsEasy();
-                break;
-            case 7:
-                qubeEquationsHard();
-                break;
-            default:
+        switch (numberOfExample) {
+            case 1 -> easyEquationsEasy();
+            case 2 -> fraction();
+            case 3 -> hardEquationsEasy();
+            case 4 -> hardEquationsEasy1();
+            case 5 -> quadEquationsEasy();
+            case 6 -> cubicEquationsEasy();
+            case 7 -> qubeEquationsHard();
+            default -> {
                 question1 = "В разработке";
                 answer0[0] = "0";
-                break;
+            }
         }
     }
     protected void cubicEquationsEasy(){

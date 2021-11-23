@@ -231,7 +231,7 @@ public class MainController implements Initializable {
             fon = 1;
         }
         switch (fon) {
-            case (1):
+            case (1) -> {
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #0098dc; -fx-background-radius: 5;");
@@ -243,8 +243,8 @@ public class MainController implements Initializable {
                 buttonReturn.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
                 expmenu.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
                 anotherfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                break;
-            case (2):
+            }
+            case (2) -> {
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ea323c, #f5555d);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #ea323c; -fx-background-radius: 5;");
@@ -256,8 +256,8 @@ public class MainController implements Initializable {
                 buttonReturn.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
                 expmenu.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
                 anotherfon.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                break;
-            case (3):
+            }
+            case (3) -> {
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ffc825, #ffeb57);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #ffc825; -fx-background-radius: 5;");
@@ -269,9 +269,9 @@ public class MainController implements Initializable {
                 buttonReturn.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
                 expmenu.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
                 anotherfon.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
         anotherfon.setText(list.get(fon - 1));
     }
@@ -485,20 +485,16 @@ public class MainController implements Initializable {
         if(level != 0) {
             countOfPraxis.setVisible(true);
             switch (level % 3) {
-                case (1):
-                    praxis = 20;
-                    break;
-                case (2):
+                case (1) -> praxis = 20;
+                case (2) -> {
                     praxis = 30;
                     countOfPraxis1.setVisible(true);
-                    break;
-                case (0):
+                }
+                case (0) -> {
                     praxis = 40;
                     countOfPraxis1.setVisible(true);
-                    break;
-                default:
-                    praxis = 10;
-                    break;
+                }
+                default -> praxis = 10;
             }
         }
         else{
@@ -597,18 +593,12 @@ public class MainController implements Initializable {
                 if(width > 150){
                     timerRectangle.setFill(Color.rgb(146,168,25));
                 }
-                switch (width){
-                    case 150:
-                        timerRectangle.setFill(Color.rgb(255,213,0));
-                        break;
-                    case 100:
-                        timerRectangle.setFill(Color.rgb(239,165,16));
-                        break;
-                    case 50:
-                        timerRectangle.setFill(Color.rgb(232,12,12));
-                        break;
-                    default:
-                        break;
+                switch (width) {
+                    case 150 -> timerRectangle.setFill(Color.rgb(255, 213, 0));
+                    case 100 -> timerRectangle.setFill(Color.rgb(239, 165, 16));
+                    case 50 -> timerRectangle.setFill(Color.rgb(232, 12, 12));
+                    default -> {
+                    }
                 }
                 try {
                     Thread.sleep(330);
