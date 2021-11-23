@@ -13,6 +13,9 @@ repositories {
     mavenCentral()
 }
 
+targetCompatibility = '16'
+sourceCompatibility = '16'
+
 ext {
     junitVersion = '5.8.1'
 }
