@@ -45,7 +45,7 @@ test {
     useJUnitPlatform()
 }
 
-jacocoUnitTestReport {
+jacocoTestReport {
     dependsOn test
     reports {
         html.required = true
