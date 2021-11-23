@@ -54,8 +54,7 @@ jacocoTestReport {
 
 jacoco {
     toolVersion = "0.8.7"
-    reportsDirectory = layout.buildDirectory.dir('$buildDir/reports/jacoco')
-    reportsDirectory = layout.buildDirectory.dir('/reports/jacoco')
+    reportsDirectory = layout.buildDirectory.dir('reports/jacoco')
 }
 
 jacocoTestCoverageVerification {
