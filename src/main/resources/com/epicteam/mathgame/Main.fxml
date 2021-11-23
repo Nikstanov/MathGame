@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane fx:id="mainMenu" disable="true" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;" visible="false">
+        <Button fx:id="startButton" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#click1" prefHeight="68.0" prefWidth="362.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Старт" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="hardbutton" layoutX="211.0" layoutY="280.0" mnemonicParsing="false" onAction="#click2" prefHeight="44.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Сложность: Легкий" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="211.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="280.0">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="levelbutton" layoutX="16.0" layoutY="280.0" mnemonicParsing="false" onAction="#click" prefHeight="44.0" prefWidth="162.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Уровень: 1" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="222.0">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Button>
+        <Label fx:id="diffenough" layoutX="216.0" layoutY="308.0" text="Пройди хотя бы 2 раза на легком" textFill="#ea1b1b" visible="false">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="levelenough" layoutX="51.0" layoutY="307.0" text="Проблема с доступом" textFill="#ea1b1b" visible="false" />
+    </AnchorPane>
+    <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;">
+        <TextField fx:id="mainTextField" alignment="CENTER" layoutX="100.0" layoutY="340.0" onAction="#clickTextField" prefColumnCount="11" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 30;">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </TextField>
+        <Button fx:id="answerButton" layoutX="102.0" layoutY="382.0" mnemonicParsing="false" onAction="#clickAnswer" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Отправить">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font></Button>
+        <Label alignment="CENTER" layoutX="100.0" layoutY="319.0" prefHeight="26.0" prefWidth="200.0" text="Ответ" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="question1" layoutX="115.0" layoutY="270.0" text="Вопрос" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+        <Button fx:id="buttonReturn" alignment="CENTER" layoutX="263.0" layoutY="234.0" mnemonicParsing="false" onAction="#clickReturn" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Закончить" textFill="WHITE">
+            <font>
+                <Font name="Tahoma Bold" size="14.0" />
+            </font></Button>
+        <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffffff" height="12.0" layoutX="100.0" layoutY="314.0" stroke="#ffffff"
+                   strokeType="INSIDE" width="200.0" />
+        <Label fx:id="question2" layoutX="125.0" layoutY="266.0" text="Всякие знаки и приколдесы" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font></Label>
+        <Label fx:id="question3" layoutX="115.0" layoutY="246.0" text="циферки" textFill="WHITE">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Label>
+        <FlowPane fx:id="countOfPraxis" layoutX="99.0" layoutY="426.0" prefHeight="30.0" prefWidth="200.0">
+            <children>
+                <Circle fx:id="circle1" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle2" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle3" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="7.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle4" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="7.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle5" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="7.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle6" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="7.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle7" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="7.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle8" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="21.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle9" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="36.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle10" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="36.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle11" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="36.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle12" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="65.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle13" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="93.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle14" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="93.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle15" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="108.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle16" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="122.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle17" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="137.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle18" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="137.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle19" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="165.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="circle20" centerX="10.0" centerY="300.0" fill="WHITE" layoutX="180.0" layoutY="-283.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                <FlowPane fx:id="countOfPraxis1" prefHeight="6.0" prefWidth="211.0">
+                    <children>
+                        <Circle fx:id="circle21" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle22" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle23" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle24" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle25" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle26" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle27" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle28" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle29" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle30" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle31" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle32" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle33" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle34" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle35" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle36" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle37" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle38" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle39" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="circle40" centerX="10.0" centerY="300.0" fill="WHITE" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                    </children></FlowPane>
+            </children>
+        </FlowPane>
+        <AnchorPane layoutX="331.0" layoutY="324.0" prefHeight="135.0" prefWidth="54.0">
+            <children>
+                <Circle fill="WHITE" layoutX="27.0" layoutY="112.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="WHITE" layoutX="27.0" layoutY="68.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="WHITE" layoutX="27.0" layoutY="24.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <ImageView fx:id="heart1" fitHeight="26.0" fitWidth="29.0" layoutX="13.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="heart11" fitHeight="26.0" fitWidth="29.0" layoutX="13.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="heart111" fitHeight="26.0" fitWidth="29.0" layoutX="13.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
+            </children></AnchorPane>
+    </AnchorPane>
+    <AnchorPane fx:id="forwardfon" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #0098dc; -fx-background-radius: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Label alignment="CENTER" layoutX="80.0" layoutY="14.0" prefHeight="123.0" prefWidth="237.0" text="MATH" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="14.0">
+            <font>
+                <Font name="Corbel Bold" size="57.0" />
+            </font>
+        </Label>
+        <Label layoutX="119.0" layoutY="67.0" prefHeight="95.0" prefWidth="162.0" text="Simulator" textFill="WHITE" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="67.0">
+            <font>
+                <Font name="Corbel Bold" size="37.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+    <Label fx:id="expmenu" alignment="CENTER" layoutX="1.0" layoutY="202.0" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 25; -fx-alignment: center;" text="Ваш опыт:" textFill="WHITE" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="202.0">
+        <font>
+            <Font name="Tahoma Bold" size="14.0" />
+        </font>
+    </Label>
+    <Button fx:id="anotherfon" alignment="CENTER" layoutX="263.0" layoutY="200.0" mnemonicParsing="false" onAction="#newFon" prefWidth="122.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Синий фон">
+        <font>
+            <Font name="System Bold" size="14.0" />
+        </font>
+    </Button>
+</AnchorPane>
