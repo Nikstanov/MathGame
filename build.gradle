@@ -3,6 +3,7 @@ plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
     id 'jacoco'
+    id "org.sonarqube" version "3.3"
 }
 
 group 'com.epicteam'
@@ -79,4 +80,13 @@ jacocoTestCoverageVerification {
             }
         }
     }
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "Nikstanov_ProjectTrenager"
+    property "sonar.organization", "nikstanov"
+    property "sonar.host.url", "https://sonarcloud.io"
+    property "sonar.coverage.jacoco.xmlReportPaths", fileTree(include: ['jacoco*.xml'], dir: "$buildDir/reports/jacoco/test").collect()
+  }
 }
