@@ -301,6 +301,7 @@ public class Generation {
     }
 
     protected void trigonEquations(){
+        DecimalFormat df = new DecimalFormat("#.##");
         double[] trigonNums = {0.0, 30.0, 45.0, 60.0, 90.0};
         String[] trigonNames = {"sin", "cos", "tg", "ctg"};
         int ranTrigonNum = (ran.nextInt(trigonNums.length)), ranTrigonName = (ran.nextInt(trigonNames.length));
@@ -309,8 +310,6 @@ public class Generation {
         double value = 0;
 
 
-        question1 = "        " + trigonNames[ranTrigonName] + "(" + trigonNums[ranTrigonNum] + "°" + ")";
-
         if(trigonNames[ranTrigonName].equals(sin)){
             value = value + Math.sin(rad);
         }
@@ -318,19 +317,27 @@ public class Generation {
             value = value + Math.cos(rad);
         }
         else if(trigonNames[ranTrigonName].equals(tg)){
-            while (trigonNums[ranTrigonNum] == 90.0){
+            while (trigonNums[ranTrigonNum] >= 90.0){
                 ranTrigonNum = (ran.nextInt(trigonNums.length));
+                rad = Math.toRadians(trigonNums[ranTrigonNum]);
+                value = value + Math.tan(rad);
             }
+            value = value + Math.tan(rad);
         }
         else if(trigonNames[ranTrigonName].equals(ctg)){
-            while (trigonNums[ranTrigonNum] == 0.0){
+            while (trigonNums[ranTrigonNum] <= 0.0){
                 ranTrigonNum = (ran.nextInt(trigonNums.length));
+                rad = Math.toRadians(trigonNums[ranTrigonNum]);
+                value = value + 1.0 / Math.tan(rad);
             }
+            value = value + 1.0 / Math.tan(rad);
         }
 
         value = Math.round(value * 100.0) / 100.0;
 
-        answer0[0] = String.format("%s",value);
+        question1 = "        " + trigonNames[ranTrigonName] + "(" + trigonNums[ranTrigonNum] + "°" + ")";
+
+        answer0[0] = String.format("%s",df.format(value));
     }
 
     protected void logEquationsEasy(){
