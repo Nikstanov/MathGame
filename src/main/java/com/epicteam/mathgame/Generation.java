@@ -50,13 +50,13 @@ public class Generation {
             }
         }
         switch (numberOfExample) {
-            case 1 -> easyEquationsEasy();
+            case 1 -> trigonEquations();
             case 2 -> fraction();
             case 3 -> hardEquationsEasy();
             case 4 -> hardEquationsHard();
             case 5 -> quadEquationsEasy();
             case 6 -> cubicEquations();
-            case 7 -> trigonEquations();
+            case 7 -> easyEquationsEasy();
             default -> {
                 question1 = "В разработке";
                 answer0[0] = "0";
@@ -301,14 +301,11 @@ public class Generation {
     protected void trigonEquations(){
         double[] trigonNums = {0.0, 30.0, 45.0, 60.0, 90.0};
         String[] trigonNames = {"sin", "cos", "tg", "ctg"};
-        int ranTrigonNum = (ran.nextInt(trigonNums.length));
-        int ranTrigonName = (ran.nextInt(trigonNames.length));
+        int ranTrigonNum = (ran.nextInt(trigonNums.length)), ranTrigonName = (ran.nextInt(trigonNames.length));
+        String sin = "sin", cos = "cos", tg = "tg", ctg = "ctg";
         double rad = Math.toRadians(trigonNums[ranTrigonNum]);
         double value = 0;
-        String sin = "sin";
-        String cos = "cos";
-        String tg = "tg";
-        String ctg = "ctg";
+
 
         question1 = "        " + trigonNames[ranTrigonName] + "(" + trigonNums[ranTrigonNum] + "°" + ")";
 
