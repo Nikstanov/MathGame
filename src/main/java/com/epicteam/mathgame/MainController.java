@@ -232,45 +232,46 @@ public class MainController implements Initializable {
         }
         switch (fon) {
             case (1) -> {
+                String settings1 = "-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #0098dc; -fx-background-radius: 5;");
                 backfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;");
-                startButton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                hardbutton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                levelbutton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                answerButton.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                buttonReturn.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                expmenu.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                anotherfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                startButton.setStyle(settings1);
+                hardbutton.setStyle(settings1);
+                levelbutton.setStyle(settings1);
+                answerButton.setStyle(settings1);
+                buttonReturn.setStyle(settings1);
+                expmenu.setStyle(settings1);
+                anotherfon.setStyle(settings1);
             }
             case (2) -> {
+                String settings2 = "-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ea323c, #f5555d);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #ea323c; -fx-background-radius: 5;");
                 backfon.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 5;");
-                startButton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                hardbutton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                levelbutton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                answerButton.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                buttonReturn.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                expmenu.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                anotherfon.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
+                startButton.setStyle(settings2);
+                hardbutton.setStyle(settings2);
+                levelbutton.setStyle(settings2);
+                answerButton.setStyle(settings2);
+                buttonReturn.setStyle(settings2);
+                expmenu.setStyle(settings2);
+                anotherfon.setStyle(settings2);
             }
             case (3) -> {
+                String settings3 = "-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ffc825, #ffeb57);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #ffc825; -fx-background-radius: 5;");
                 backfon.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 5;");
-                startButton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                hardbutton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                levelbutton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                answerButton.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                buttonReturn.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                expmenu.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-                anotherfon.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;");
-            }
-            default -> {
+                startButton.setStyle(settings3);
+                hardbutton.setStyle(settings3);
+                levelbutton.setStyle(settings3);
+                answerButton.setStyle(settings3);
+                buttonReturn.setStyle(settings3);
+                expmenu.setStyle(settings3);
+                anotherfon.setStyle(settings3);
             }
         }
         anotherfon.setText(list.get(fon - 1));
@@ -597,8 +598,6 @@ public class MainController implements Initializable {
                     case 150 -> timerRectangle.setFill(Color.rgb(255, 213, 0));
                     case 100 -> timerRectangle.setFill(Color.rgb(239, 165, 16));
                     case 50 -> timerRectangle.setFill(Color.rgb(232, 12, 12));
-                    default -> {
-                    }
                 }
                 try {
                     Thread.sleep(330);
