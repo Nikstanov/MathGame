@@ -16,7 +16,6 @@ public class Generation {
     String question3;
     protected String[] answer0 = new String[]{null,null,null,null,null,null};
 
-
     private static final SecureRandom ran = new SecureRandom();
 
     public Generation(int level, int difficult){
@@ -50,19 +49,22 @@ public class Generation {
             }
         }
         switch (numberOfExample) {
-            case 1 -> trigonEquations();
+            case 1 -> easyEquationsEasy();
             case 2 -> fraction();
             case 3 -> hardEquationsEasy();
             case 4 -> hardEquationsHard();
             case 5 -> quadEquationsEasy();
             case 6 -> cubicEquations();
-            case 7 -> easyEquationsEasy();
+            case 7 -> trigonEquations();
+            case 8 -> logEquationsEasy();
             default -> {
                 question1 = "В разработке";
                 answer0[0] = "0";
             }
         }
     }
+
+
     protected int znak(int number){
         int znak = ran.nextInt(2) + 1;
         if(znak == 2){
@@ -316,24 +318,33 @@ public class Generation {
             value = value + Math.cos(rad);
         }
         else if(trigonNames[ranTrigonName].equals(tg)){
-            if(trigonNums[ranTrigonNum]<90.0){
-                value = value + Math.tan(rad);
-            }
-            else{
-                return;
+            while (trigonNums[ranTrigonNum] == 90.0){
+                ranTrigonNum = (ran.nextInt(trigonNums.length));
             }
         }
         else if(trigonNames[ranTrigonName].equals(ctg)){
-            if(trigonNums[ranTrigonNum]>0.0){
-                value = value + 1.0 / Math.tan(rad);
-            }
-            else{
-                return;
+            while (trigonNums[ranTrigonNum] == 0.0){
+                ranTrigonNum = (ran.nextInt(trigonNums.length));
             }
         }
 
         value = Math.round(value * 100.0) / 100.0;
 
         answer0[0] = String.format("%s",value);
+    }
+
+    protected void logEquationsEasy(){
+        DecimalFormat df = new DecimalFormat("#");
+        int a = ran.nextInt(10 - 1 + 1) + 1;
+        while (a == 1){
+            a = ran.nextInt(10);
+        }
+        int x = ran.nextInt(5);
+        double b = Math.exp(x*Math.log(a));
+        b = Math.round(b);
+
+        question1 = "    log" + a + "(x) =" + df.format(b);
+
+        answer0[0] = String.format("%s",x);
     }
 }
