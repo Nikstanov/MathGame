@@ -343,7 +343,7 @@ public class Generation {
         double b = Math.exp(x*Math.log(a));
         b = Math.round(b);
 
-        question1 = "    log" + a + "(x) =" + df.format(b);
+        question1 = "    log" + a + "(x) = " + df.format(b);
 
         answer0[0] = String.format("%s",x);
     }
