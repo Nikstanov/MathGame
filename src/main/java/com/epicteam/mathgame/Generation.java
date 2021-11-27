@@ -133,7 +133,7 @@ public class Generation {
             answer0[0] = x + " ";
             x1 = x1 + x2;
         }
-        else if(x1 != 0) {
+        if(x1 != 0) {
             for (int i = 2; i < x2; i++) {
                 if (x1 % i == 0 && x2 % i == 0) {
                     x1 = x1 / i;
@@ -253,7 +253,7 @@ public class Generation {
         if(d < 0){
             question1 = question1 + " - " + (x1+x2+x3)*a + "x";
         }
-        else if(d > 0) {
+        if(d > 0) {
             question1 = question1 + " + " + -(x1+x2+x3)*a + "x";
         }
 
@@ -261,14 +261,14 @@ public class Generation {
         if(a*b < 0){
             question1 = question1 + " - " + -a*b + "x";
         }
-        else if(a*b > 0) {
+        if(a*b > 0) {
             question1 = question1 + " + " + a*b + "x";
         }
         int c = -a * x1 * x2 * x3;
         if(c < 0){
             question1 = question1 + " - " + -c;
         }
-        else if(c > 0 ) {
+        if(c > 0 ) {
             question1 = question1 + " + " + c;
         }
 
@@ -285,10 +285,10 @@ public class Generation {
         if(a < 0){
             question2 = question2 + "  ";
         }
-        else if(Math.abs(d) > 10){
+        if(Math.abs(d) > 10){
             question2 = question2 + "     ";
         }
-        else if(Math.abs(d) > 100){
+        if(Math.abs(d) > 100){
             question2 = question2 + "    ";
         }
         question2 = question2 + "2";
@@ -304,8 +304,12 @@ public class Generation {
         DecimalFormat df = new DecimalFormat("#.##");
         double[] trigonNums = {0.0, 30.0, 45.0, 60.0, 90.0};
         String[] trigonNames = {"sin", "cos", "tg", "ctg"};
-        int ranTrigonNum = (ran.nextInt(trigonNums.length)), ranTrigonName = (ran.nextInt(trigonNames.length));
-        String sin = "sin", cos = "cos", tg = "tg", ctg = "ctg";
+        int ranTrigonNum = (ran.nextInt(trigonNums.length));
+        int ranTrigonName = (ran.nextInt(trigonNames.length));
+        String sin = "sin";
+        String cos = "cos";
+        String tg = "tg";
+        String ctg = "ctg";
         double rad = Math.toRadians(trigonNums[ranTrigonNum]);
         double value = 0;
 
