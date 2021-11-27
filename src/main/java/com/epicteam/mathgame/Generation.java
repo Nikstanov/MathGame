@@ -28,109 +28,166 @@ public class Generation {
     protected void generator(int level, int difficult){
         int numberOfExample = 1;
         if(difficult == 1) {
-            if (0 < level) {
-                numberOfExample = ran.nextInt(2) + 1;
-            }
-            if (3 < level) {
-                numberOfExample = ran.nextInt(2) + 5;
-            }
             if (6 < level) {
                 numberOfExample = ran.nextInt(2) + 9;
             }
+            else if (3 < level) {
+                numberOfExample = ran.nextInt(2) + 5;
+            }
+            else if (0 < level) {
+                numberOfExample = ran.nextInt(2) + 1;
+            }
         }
         else {
-            if (0 < level) {
-                numberOfExample = ran.nextInt(2) + 3;
-            }
-            if (3 < level) {
-                numberOfExample = ran.nextInt(2)+ 7;
-            }
             if (6 < level) {
                 numberOfExample = ran.nextInt(2) + 11;
+            }
+            else if (3 < level) {
+                numberOfExample = ran.nextInt(2)+ 7;
+            }
+            else if (0 < level) {
+                numberOfExample = ran.nextInt(2) + 3;
             }
         }
         switch (numberOfExample) {
             case 1 -> easyEquationsEasy();
             case 2 -> fraction();
             case 3 -> hardEquationsEasy();
-            case 4 -> hardEquationsEasy1();
+            case 4 -> hardEquationsHard();
             case 5 -> quadEquationsEasy();
-            case 6 -> cubicEquationsEasy();
-            case 7 -> qubeEquationsHard();
+            case 6 -> cubicEquations();
+            case 7 -> trigonEquations();
             default -> {
                 question1 = "В разработке";
                 answer0[0] = "0";
             }
         }
     }
-    protected void cubicEquationsEasy(){
-
+    protected int znak(int number){
+        int znak = ran.nextInt(2) + 1;
+        if(znak == 2){
+            number = number * (-1);
+        }
+        return number;
     }
 
-    protected void qubeEquationsHard(){
+    protected void easyEquationsEasy(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
             a = ran.nextInt(20) - 10;
         }
-        int x1 = ran.nextInt(20) - 10;
-        int x2 = ran.nextInt(20) - 10;
-        int x3 = ran.nextInt(20) - 10;
+        int b = ran.nextInt(20) - 10;
+        while(b == 0) {
+            b = ran.nextInt(20) - 10;
+        }
+        int x = ran.nextInt(20) - 10;
 
-        if(Math.abs(a) == 1){
-            question1 = "   x";
+        question1 = a +"x";
+        if(b < 0){
+            question1 = question1 + " - " + -b;
         }
         else{
-            question1 = a + "x";
+            question1 = question1 + " + " + b;
         }
-        int d = -a*(x1+x2+x3);
-        if(d < 0){
-            question1 = question1 + " - " + (x1+x2+x3)*a + "x";
-        }
-        if(d > 0) {
-            question1 = question1 + " + " + -(x1+x2+x3)*a + "x";
-        }
+        question1 = question1 + " = " + (a*x + b);
+        answer0[0] = String.format("%s",x);
+        layoutQuestion1 = 145;
+    }
 
-        int b = x1*x2 + x1*x3 + x2*x3;
-        if(a*b < 0){
-            question1 = question1 + " - " + -a*b + "x";
+    protected void fraction(){
+        int b = ran.nextInt(10);
+        while (b <= 1){
+            b = ran.nextInt(10);
         }
-        if(a*b > 0) {
-            question1 = question1 + " + " + a*b + "x";
+        int c = ran.nextInt(4);
+        while (c == 0){
+            c = ran.nextInt(4);
         }
-        int c = -a * x1 * x2 * x3;
-        if(c < 0){
-            question1 = question1 + " - " + -c;
+        int d = ran.nextInt(b*c);
+        while (d == 0){
+            d = ran.nextInt(10);
         }
-        if(c > 0 ) {
-            question1 = question1 + " + " + c;
+        int c1 = ran.nextInt(4);
+        while (c1 == 0 || c1 == c){
+            c1 = ran.nextInt(4);
         }
-
-        question1 = question1 + " = 0";
-
-        if(a < 0){
-            layoutQuestion2 = 147;
-            if(a == -10){
-                layoutQuestion2 = layoutQuestion2 + 11;
+        int a = ran.nextInt(c*b);
+        while (a == 0 || a > b){
+            a = ran.nextInt(10);
+        }
+        layoutQuestion1 = 150;
+        layoutQuestion2 = 155;
+        layoutQuestion3 = 150;
+        question2Font = 20;
+        layoutQuestion2Y = layoutQuestion2Y - 7;
+        question1 = " " + b*c + "       " + b*c1;
+        question2 = "—  +  —  = ?";
+        question3 = " " + a + "       " + d;
+        int x1 = a*c1 + d*c;
+        int x2 =b*c*c1;
+        int x = x1 / x2;
+        answer0[0] = "";
+        if (x != 0) {
+            answer0[0] = x + " ";
+            x1 = x1 + x2;
+        }
+        else if(x1 != 0) {
+            for (int i = 2; i < x2; i++) {
+                if (x1 % i == 0 && x2 % i == 0) {
+                    x1 = x1 / i;
+                    x2 = x2 / i;
+                }
             }
+            answer0[0] = answer0[0] + x1 + "/" + x2;
         }
+    }
 
-        question2 = "3         ";
-        if(a < 0){
-            question2 = question2 + "  ";
+    protected void hardEquationsEasy(){
+        DecimalFormat df = new DecimalFormat("###.##");
+        double a = ran.nextInt(200)/10d - 10;
+        while(a == 0) {
+            a = ran.nextInt(200)/10d - 10;
         }
-        if(Math.abs(d) > 10){
-            question2 = question2 + "     ";
+        double b = ran.nextInt(200)/10d - 10;
+        while(b == 0) {
+            b = ran.nextInt(200)/10d - 10;
         }
-        if(Math.abs(d) > 100){
-            question2 = question2 + "    ";
+        double x = ran.nextInt(20)/10d - 10;
+
+        question1 = df.format(a) + "x";
+        if(b < 0){
+            question1 = question1 + " - " + df.format(-b);
         }
-        question2 = question2 + "2";
-        answer0[0] = x1 + "," + x2 + "," + x3;
-        answer0[1] = x1 + "," + x3 + "," + x2;
-        answer0[2] = x2 + "," + x1 + "," + x3;
-        answer0[3] = x2 + "," + x3 + "," + x1;
-        answer0[4] = x3 + "," + x1 + "," + x2;
-        answer0[5] = x3 + "," + x2 + "," + x1;
+        else{
+            question1 = question1 + " + " + df.format(b);
+        }
+        question1 = question1 + " = " + df.format(a*x + b);
+
+        long iPart = (long) x;
+        if (Math.abs(x - iPart) > 0.001) {
+            answer0[0] = String.format("%.1f", x);
+        }
+        else{
+            answer0[1] = String.format("%.0f",x);
+        }
+        layoutQuestion1 = 145;
+    }
+
+    protected void hardEquationsHard(){
+        int a = znak(ran.nextInt(80) + 21);
+        int b = znak(ran.nextInt(80) + 21);
+        int x = znak(ran.nextInt(80) + 21);
+
+        question1 = a +"x";
+        if(b < 0){
+            question1 = question1 + " - " + -b;
+        }
+        else{
+            question1 = question1 + " + " + b;
+        }
+        question1 = question1 + " = " + (a*x + b);
+        answer0[0] = String.format("%s",x);
+        layoutQuestion1 = 145;
     }
 
     protected void quadEquationsEasy(){
@@ -175,130 +232,111 @@ public class Generation {
         answer0[1] = x2 + "," + x1;
     }
 
-    protected void hardEquationsEasy(){
-        DecimalFormat df = new DecimalFormat("###.##");
-        double a = ran.nextInt(200)/10d - 10;
-        while(a == 0) {
-            a = ran.nextInt(200)/10d - 10;
-        }
-        double b = ran.nextInt(200)/10d - 10;
-        while(b == 0) {
-            b = ran.nextInt(200)/10d - 10;
-        }
-        double x = ran.nextInt(20)/10d - 10;
-
-        question1 = df.format(a) + "x";
-        if(b < 0){
-            question1 = question1 + " - " + df.format(-b);
-        }
-        else{
-            question1 = question1 + " + " + df.format(b);
-        }
-        question1 = question1 + " = " + df.format(a*x + b);
-
-        long iPart = (long) x;
-        if (Math.abs(x - iPart) > 0.001) {
-            answer0[0] = String.format("%.1f", x);
-        }
-        else{
-            answer0[1] = String.format("%.0f",x);
-        }
-        layoutQuestion1 = 145;
-    }
-
-    protected void easyEquationsEasy(){
+    protected void cubicEquations(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
             a = ran.nextInt(20) - 10;
         }
-        int b = ran.nextInt(20) - 10;
-        while(b == 0) {
-            b = ran.nextInt(20) - 10;
-        }
-        int x = ran.nextInt(20) - 10;
+        int x1 = ran.nextInt(20) - 10;
+        int x2 = ran.nextInt(20) - 10;
+        int x3 = ran.nextInt(20) - 10;
 
-        question1 = a +"x";
-        if(b < 0){
-            question1 = question1 + " - " + -b;
+        if(Math.abs(a) == 1){
+            question1 = "   x";
         }
         else{
-            question1 = question1 + " + " + b;
+            question1 = a + "x";
         }
-        question1 = question1 + " = " + (a*x + b);
-        answer0[0] = String.format("%s",x);
-        layoutQuestion1 = 145;
-    }
+        int d = -a*(x1+x2+x3);
+        if(d < 0){
+            question1 = question1 + " - " + (x1+x2+x3)*a + "x";
+        }
+        else if(d > 0) {
+            question1 = question1 + " + " + -(x1+x2+x3)*a + "x";
+        }
 
-    protected void hardEquationsEasy1(){
-        int a = znak(ran.nextInt(80) + 21);
-        int b = znak(ran.nextInt(80) + 21);
-        int x = znak(ran.nextInt(80) + 21);
+        int b = x1*x2 + x1*x3 + x2*x3;
+        if(a*b < 0){
+            question1 = question1 + " - " + -a*b + "x";
+        }
+        else if(a*b > 0) {
+            question1 = question1 + " + " + a*b + "x";
+        }
+        int c = -a * x1 * x2 * x3;
+        if(c < 0){
+            question1 = question1 + " - " + -c;
+        }
+        else if(c > 0 ) {
+            question1 = question1 + " + " + c;
+        }
 
-        question1 = a +"x";
-        if(b < 0){
-            question1 = question1 + " - " + -b;
-        }
-        else{
-            question1 = question1 + " + " + b;
-        }
-        question1 = question1 + " = " + (a*x + b);
-        answer0[0] = String.format("%s",x);
-        layoutQuestion1 = 145;
-    }
+        question1 = question1 + " = 0";
 
-    protected int znak(int number){
-        int znak = ran.nextInt(2) + 1;
-        if(znak == 2){
-            number = number * (-1);
-        }
-        return number;
-    }
-
-    protected void fraction(){
-        int b = ran.nextInt(10);
-        while (b <= 1){
-            b = ran.nextInt(10);
-        }
-        int c = ran.nextInt(4);
-        while (c == 0){
-            c = ran.nextInt(4);
-        }
-        int d = ran.nextInt(b*c);
-        while (d == 0){
-            d = ran.nextInt(10);
-        }
-        int c1 = ran.nextInt(4);
-        while (c1 == 0 || c1 == c){
-            c1 = ran.nextInt(4);
-        }
-        int a = ran.nextInt(c*b);
-        while (a == 0 || a > b){
-            a = ran.nextInt(10);
-        }
-        layoutQuestion1 = 150;
-        layoutQuestion2 = 155;
-        layoutQuestion3 = 150;
-        question2Font = 20;
-        layoutQuestion2Y = layoutQuestion2Y - 7;
-        question1 = " " + b*c + "       " + b*c1;
-        question2 = "—  +  —  = ?";
-        question3 = " " + a + "       " + d;
-        int x1 = a*c1 + d*c;
-        int x2 =b*c*c1;
-        int x = x1 / x2;
-        answer0[0] = "";
-        if (x != 0) {
-            answer0[0] = x + " ";
-            x1 = x1 - x2;
-        }
-        if(x1 != 0) {
-            for (int i = 2; i < x2; i++) {
-                if (x1 % i == 0 && x2 % i == 0) {
-                    x1 = x1 / i;
-                    x2 = x2 / i;
-                }
+        if(a < 0){
+            layoutQuestion2 = 147;
+            if(a == -10){
+                layoutQuestion2 = layoutQuestion2 + 11;
             }
-            answer0[0] = answer0[0] + x1 + "/" + x2;
         }
+
+        question2 = "3         ";
+        if(a < 0){
+            question2 = question2 + "  ";
+        }
+        else if(Math.abs(d) > 10){
+            question2 = question2 + "     ";
+        }
+        else if(Math.abs(d) > 100){
+            question2 = question2 + "    ";
+        }
+        question2 = question2 + "2";
+        answer0[0] = x1 + "," + x2 + "," + x3;
+        answer0[1] = x1 + "," + x3 + "," + x2;
+        answer0[2] = x2 + "," + x1 + "," + x3;
+        answer0[3] = x2 + "," + x3 + "," + x1;
+        answer0[4] = x3 + "," + x1 + "," + x2;
+        answer0[5] = x3 + "," + x2 + "," + x1;
+    }
+
+    protected void trigonEquations(){
+        double[] trigonNums = {0.0, 30.0, 45.0, 60.0, 90.0};
+        String[] trigonNames = {"sin", "cos", "tg", "ctg"};
+        int ranTrigonNum = (ran.nextInt(trigonNums.length));
+        int ranTrigonName = (ran.nextInt(trigonNames.length));
+        double rad = Math.toRadians(trigonNums[ranTrigonNum]);
+        double value = 0;
+        String sin = "sin";
+        String cos = "cos";
+        String tg = "tg";
+        String ctg = "ctg";
+
+        question1 = "        " + trigonNames[ranTrigonName] + "(" + trigonNums[ranTrigonNum] + "°" + ")";
+
+        if(trigonNames[ranTrigonName].equals(sin)){
+            value = value + Math.sin(rad);
+        }
+        else if(trigonNames[ranTrigonName].equals(cos)){
+            value = value + Math.cos(rad);
+        }
+        else if(trigonNames[ranTrigonName].equals(tg)){
+            if(trigonNums[ranTrigonNum]<90.0){
+                value = value + Math.tan(rad);
+            }
+            else{
+                return;
+            }
+        }
+        else if(trigonNames[ranTrigonName].equals(ctg)){
+            if(trigonNums[ranTrigonNum]>0.0){
+                value = value + 1.0 / Math.tan(rad);
+            }
+            else{
+                return;
+            }
+        }
+
+        value = Math.round(value * 100.0) / 100.0;
+
+        answer0[0] = String.format("%s",value);
     }
 }
