@@ -10,5 +10,6 @@ class GenerationTest {
     void generator() {
         Generation gen = new Generation(1,1);
         assert(100 < gen.layoutQuestion2Y);
+        assertNotNull(gen.answer0[0]);
     }
 }

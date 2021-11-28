@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.scene.Parent;
 import java.io.FileReader;
@@ -49,14 +50,17 @@ public class Main extends Application {
         });
     }
 
-    public void load() throws Exception {
-        FileReader fr = new FileReader("preservation.txt");
-        try (Scanner scan = new Scanner(fr)) {
-            exp = Integer.parseInt(scan.nextLine());
-            for (int i = 0; i < 10; i++) {
-                arrayLevels[i] = Integer.parseInt(scan.nextLine());
+    public void load() {
+        try(FileReader fr = new FileReader("preservation.txt")) {
+            try (Scanner scan = new Scanner(fr)) {
+                exp = Integer.parseInt(scan.nextLine());
+                for (int i = 0; i < 10; i++) {
+                    arrayLevels[i] = Integer.parseInt(scan.nextLine());
+                }
+                fr.close();
             }
-            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -64,13 +68,11 @@ public class Main extends Application {
         if (controller.praxisLeft != 0 && controller.level != 0 && controller.exp >= 200){
             controller.exp = controller.exp - 200;
         }
-        try {
-            FileWriter fw = new FileWriter("preservation.txt");
+        try (FileWriter fw = new FileWriter("preservation.txt")){
             fw.write(controller.exp+"\n");
             for(int i = 0;i < 10;i++){
                 fw.write(controller.arrayLevels[i] + "\n");
             }
-            fw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-public class testGUI {
+class TestGUI {
 
     @Test
-    public void testA() throws InterruptedException {
+    void testA() throws InterruptedException {
         Thread thread = new Thread(() -> {
             new JFXPanel();
             Platform.runLater(() -> {
@@ -26,27 +26,21 @@ public class testGUI {
 
                     main.controller.newFon(new ActionEvent());
                     assertEquals(2,main.controller.fon);
-                    Thread.sleep(1000);
 
                     main.controller.newFon(new ActionEvent());
                     assertEquals(3,main.controller.fon);
-                    Thread.sleep(1000);
 
                     main.controller.newFon(new ActionEvent());
                     assertEquals(1,main.controller.fon);
-                    Thread.sleep(1000);
 
                     main.controller.diffenough.setVisible(false);
                     main.controller.levelenough.setVisible(false);
                     main.controller.click1(new ActionEvent());
                     main.controller.newQuestion();
-                    Thread.sleep(1000);
                     assertNotNull(main.controller.question1);
 
-                    Thread.sleep(1000);
                     main.controller.clickTextField(new ActionEvent());
                     assertNotNull(main.controller.mainTextField.getText());
-                    Thread.sleep(1000);
 
                     main.controller.timer.start();
                     main.saveData(main.controller);

@@ -486,17 +486,18 @@ public class MainController implements Initializable {
     public int numberOfLevels(int level){
         if(level != 0) {
             countOfPraxis.setVisible(true);
+            praxis = 10;
             switch (level % 3) {
-                case 1 -> praxis = 20;
+                case 1 -> praxis = praxis + 10;
                 case 2 -> {
-                    praxis = 30;
+                    praxis = praxis + 20;
                     countOfPraxis1.setVisible(true);
                 }
                 case 0 -> {
-                    praxis = 40;
+                    praxis = praxis + 30;
                     countOfPraxis1.setVisible(true);
                 }
-                default -> praxis = 10;
+                default -> countOfPraxis.setVisible(false);
             }
         }
         else{
@@ -599,6 +600,7 @@ public class MainController implements Initializable {
                     case 150 -> timerRectangle.setFill(Color.rgb(255, 213, 0));
                     case 100 -> timerRectangle.setFill(Color.rgb(239, 165, 16));
                     case 50 -> timerRectangle.setFill(Color.rgb(232, 12, 12));
+                    default -> timerRectangle.setFill(Color.rgb(146,168,25));
                 }
                 try {
                     Thread.sleep(330);
