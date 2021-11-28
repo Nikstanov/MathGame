@@ -15,7 +15,7 @@ class GenerationTest {
 
         gen = new Generation(2,1, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.question1);
+        assertNotNull(gen.answer0[0]);
 
         gen = new Generation(3,1, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
@@ -23,7 +23,7 @@ class GenerationTest {
 
         gen = new Generation(1,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.question1);
+        assertNotNull(gen.answer0[0]);
 
         gen = new Generation(2,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
@@ -42,7 +42,6 @@ class GenerationTest {
 
         gen = new Generation(6,1, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
 
         gen = new Generation(4,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
@@ -50,7 +49,6 @@ class GenerationTest {
 
         gen = new Generation(5,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
 
         gen = new Generation(6,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
@@ -63,11 +61,10 @@ class GenerationTest {
 
         gen = new Generation(8,1, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
 
         gen = new Generation(9,1, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.question1);
+        assertNotNull(gen.answer0[0]);
 
         gen = new Generation(7,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
