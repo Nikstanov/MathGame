@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -66,12 +67,21 @@ public class MainController implements Initializable {
         returnBack = false;
         startButton.defaultButtonProperty();
 
+        File fileElPrimo = new File("src/main/resources/com/epicteam/mathgame/ElPrimo.png");
+        Image imageElPrimo = new Image(fileElPrimo.toURI().toString());
+        elPrimo.setImage(imageElPrimo);
+
+        File fileBoard = new File("src/main/resources/com/epicteam/mathgame/Board.png");
+        Image imageBoard = new Image(fileBoard.toURI().toString());
+        boardInGame.setImage(imageBoard);
+        boardInGame1.setImage(imageBoard);
+
         circles.addAll(new ArrayList<>(Arrays.asList(circle1,circle2,circle3,circle4,circle5,circle6,circle7,circle8,
                 circle9,circle10,circle11,circle12,circle13,circle14,circle15,circle16,circle17,circle18,circle19,
                 circle20,circle21,circle22,circle23,circle24,circle25,circle26,circle27,circle28,circle29,circle30,
                 circle31,circle32,circle33,circle34,circle35,circle36,circle37,circle38,circle39,circle40)));
 
-        File file = new File("heart.png");
+        File file = new File("src/main/resources/com/epicteam/mathgame/heart.png");
 
         try {
             String localUrl = file.toURI().toURL().toString();
@@ -83,6 +93,9 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private ImageView elPrimo;
 
     @FXML
     private Circle circle1;
@@ -231,6 +244,12 @@ public class MainController implements Initializable {
     @FXML
     public AnchorPane forwardfon;
 
+    @FXML
+    private ImageView boardInGame;
+
+    @FXML
+    private ImageView boardInGame1;
+
     int fon = 1;
 
     /**
@@ -244,6 +263,8 @@ public class MainController implements Initializable {
         }
         switch (fon) {
             case 1 -> {
+                boardInGame.setVisible(false);
+                boardInGame1.setVisible(false);
                 String settings1 = "-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);");
                 anotherfon.setTextFill(Color.WHITE);
@@ -258,20 +279,12 @@ public class MainController implements Initializable {
                 anotherfon.setStyle(settings1);
             }
             case 2 -> {
-                String settings2 = "-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
-                anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ea323c, #f5555d);");
-                anotherfon.setTextFill(Color.WHITE);
-                forwardfon.setStyle("-fx-background-color: #ea323c; -fx-background-radius: 5;");
-                backfon.setStyle("-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 5;");
-                startButton.setStyle(settings2);
-                hardbutton.setStyle(settings2);
-                levelbutton.setStyle(settings2);
-                answerButton.setStyle(settings2);
-                buttonReturn.setStyle(settings2);
-                expmenu.setStyle(settings2);
-                anotherfon.setStyle(settings2);
+                boardInGame.setVisible(true);
+                boardInGame1.setVisible(true);
             }
             case 3 -> {
+                boardInGame.setVisible(false);
+                boardInGame1.setVisible(false);
                 String settings3 = "-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ffc825, #ffeb57);");
                 anotherfon.setTextFill(Color.WHITE);
@@ -651,7 +664,6 @@ public class MainController implements Initializable {
                     case 150 -> timerRectangle.setFill(Color.rgb(255, 213, 0));
                     case 100 -> timerRectangle.setFill(Color.rgb(239, 165, 16));
                     case 50 -> timerRectangle.setFill(Color.rgb(232, 12, 12));
-                    default -> timerRectangle.setFill(Color.rgb(146,168,25));
                 }
                 try {
                     Thread.sleep(330);
