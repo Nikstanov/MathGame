@@ -197,31 +197,31 @@ public class MainController implements Initializable {
     private Circle circle40;
 
     @FXML
-    private ImageView heart1;
+    public ImageView heart1;
 
     @FXML
-    private ImageView heart11;
+    public ImageView heart11;
 
     @FXML
-    private ImageView heart111;
+    public ImageView heart111;
 
     @FXML
-    private Button startButton;
+    public Button startButton;
 
     @FXML
-    private FlowPane countOfPraxis;
+    public FlowPane countOfPraxis;
 
     @FXML
-    private FlowPane countOfPraxis1;
+    public FlowPane countOfPraxis1;
 
     @FXML
-    private Button anotherfon;
+    public Button anotherfon;
 
     @FXML
-    private AnchorPane backfon;
+    public AnchorPane backfon;
 
     @FXML
-    private AnchorPane forwardfon;
+    public AnchorPane forwardfon;
 
     int fon = 1;
     @FXML
@@ -231,7 +231,7 @@ public class MainController implements Initializable {
             fon = 1;
         }
         switch (fon) {
-            case 1:
+            case 1 -> {
                 String settings1 = "-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);");
                 anotherfon.setTextFill(Color.WHITE);
@@ -244,8 +244,8 @@ public class MainController implements Initializable {
                 buttonReturn.setStyle(settings1);
                 expmenu.setStyle(settings1);
                 anotherfon.setStyle(settings1);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 String settings2 = "-fx-background-color: linear-gradient(#ea323c, #f5555d); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ea323c, #f5555d);");
                 anotherfon.setTextFill(Color.WHITE);
@@ -258,8 +258,8 @@ public class MainController implements Initializable {
                 buttonReturn.setStyle(settings2);
                 expmenu.setStyle(settings2);
                 anotherfon.setStyle(settings2);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 String settings3 = "-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ffc825, #ffeb57);");
                 anotherfon.setTextFill(Color.WHITE);
@@ -272,20 +272,21 @@ public class MainController implements Initializable {
                 buttonReturn.setStyle(settings3);
                 expmenu.setStyle(settings3);
                 anotherfon.setStyle(settings3);
-                break;
+            }
+            default -> anotherfon.setText("Ошибка");
         }
         anotherfon.setText(list.get(fon - 1));
     }
 
 
     @FXML
-    private Button hardbutton;
+    public Button hardbutton;
 
     @FXML
-    private Label diffenough;
+    public Label diffenough;
 
     @FXML
-    private void click2(ActionEvent event) {
+    public void click2(ActionEvent event) {
         if (!levelenough.isVisible()) {
             diffenough.setVisible(false);
             if (difficult == 1) {
@@ -313,13 +314,13 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private Button levelbutton;
+    public Button levelbutton;
 
     @FXML
-    private Label levelenough;
+    public Label levelenough;
 
     @FXML
-    private void click(ActionEvent event) {
+    public void click(ActionEvent event) {
         if(level < 9) {
             level = level + 1;
         }
@@ -355,25 +356,25 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private Label expmenu;
+    public Label expmenu;
 
     @FXML
-    private AnchorPane mainMenu;
+    public AnchorPane mainMenu;
 
     @FXML
-    private AnchorPane gameMenu;
+    public AnchorPane gameMenu;
 
     @FXML
-    private Label question1;
+    public Label question1;
 
     @FXML
-    private TextField mainTextField;
+    public TextField mainTextField;
 
     @FXML
-    private Button buttonReturn;
+    public Button buttonReturn;
 
     @FXML
-    private void click1(ActionEvent event){
+    public void click1(ActionEvent event){
         if(!levelenough.isVisible() && !diffenough.isVisible()) {
             expmenu.setText(STRINGEXP + exp);
             if (levelenough.isVisible() && exp >= needexp && level != 0 && arrayLevels[level] >= 1) {
@@ -420,15 +421,15 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private Button answerButton;
+    public Button answerButton;
 
     @FXML
-    private Label question2;
+    public Label question2;
 
     @FXML
-    private Label question3;
+    public Label question3;
 
-    private synchronized void newQuestion(){
+    public synchronized void newQuestion(){
         hearts(lives);
         Generation gen = new Generation(level, difficult);
         question1.setText(gen.question1);
@@ -460,7 +461,7 @@ public class MainController implements Initializable {
         praxisLeft--;
     }
 
-    private void hearts(int lives){
+    public void hearts(int lives){
         heart1.setVisible(true);
         heart11.setVisible(true);
         heart111.setVisible(true);
@@ -482,23 +483,20 @@ public class MainController implements Initializable {
     }
 
 
-    private int numberOfLevels(int level){
+    public int numberOfLevels(int level){
         if(level != 0) {
             countOfPraxis.setVisible(true);
             switch (level % 3) {
-                case 1:
-                    praxis = 20;
-                    break;
-                case 2:
+                case 1 -> praxis = 20;
+                case 2 -> {
                     praxis = 30;
                     countOfPraxis1.setVisible(true);
-                    break;
-                case 0:
+                }
+                case 0 -> {
                     praxis = 40;
                     countOfPraxis1.setVisible(true);
-                    break;
-                default:
-                    praxis = 10;
+                }
+                default -> praxis = 10;
             }
         }
         else{
@@ -508,11 +506,11 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void clickTextField(ActionEvent event){answer = mainTextField.getText();}
+    public void clickTextField(ActionEvent event){answer = mainTextField.getText();}
 
 
     @FXML
-    private void clickAnswer(ActionEvent event){
+    public void clickAnswer(ActionEvent event){
         if (mainTextField.getText() != null){
             answerEvent();
         }
@@ -553,7 +551,7 @@ public class MainController implements Initializable {
         width = 200;
     }
 
-    private void checkAnswer(){
+    public void checkAnswer(){
         boolean flag = false;
         for(int i = 0; i < 6; i++){
             if (answer0[i] != null && answer.equals(answer0[i])) {
@@ -565,7 +563,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void clickReturn(ActionEvent event){
+    public void clickReturn(ActionEvent event){
         if(!returnBack){
             buttonReturn.setText("Точно?");
             returnBack = true;
@@ -586,7 +584,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private Rectangle timerRectangle;
+    public Rectangle timerRectangle;
 
     class Timer implements Runnable{
         @Override
@@ -598,15 +596,9 @@ public class MainController implements Initializable {
                     timerRectangle.setFill(Color.rgb(146,168,25));
                 }
                 switch (width) {
-                    case 150:
-                        timerRectangle.setFill(Color.rgb(255, 213, 0));
-                        break;
-                    case 100:
-                        timerRectangle.setFill(Color.rgb(239, 165, 16));
-                        break;
-                    case 50:
-                        timerRectangle.setFill(Color.rgb(232, 12, 12));
-                        break;
+                    case 150 -> timerRectangle.setFill(Color.rgb(255, 213, 0));
+                    case 100 -> timerRectangle.setFill(Color.rgb(239, 165, 16));
+                    case 50 -> timerRectangle.setFill(Color.rgb(232, 12, 12));
                 }
                 try {
                     Thread.sleep(330);
