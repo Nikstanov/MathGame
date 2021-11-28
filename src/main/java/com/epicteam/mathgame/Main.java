@@ -12,17 +12,29 @@ import java.io.FileWriter;
 import java.util.Objects;
 import java.util.Scanner;
 
-
+/**
+ * <h1> Main application class </h1>
+ * Applications for pumping brains, developing the ability to solve the school curriculum of mathematics
+ * @author Stahnov
+ * @version 1.0.0
+ */
 public class Main extends Application {
     int exp = 15;
     int[] arrayLevels = {0,0,0,0,0,0,0,0,0,0};
 
     MainController controller;
 
+    /**
+     * Main method
+     */
     public static void main(String[] args){
         Application.launch(args);
     }
 
+    /**
+     * Opening an application
+     * @param stage application stage
+     */
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -49,6 +61,9 @@ public class Main extends Application {
         });
     }
 
+    /**
+     * Loading user data and game progress
+     */
     public void load() {
         try(FileReader fr = new FileReader("preservation.txt")) {
             try (Scanner scan = new Scanner(fr)) {
@@ -62,6 +77,10 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Saving data about the user and the progress of the game
+     * @param controller of application
+     */
     public void saveData(MainController controller){
         if (controller.praxisLeft != 0 && controller.level != 0 && controller.exp >= 200){
             controller.exp = controller.exp - 200;

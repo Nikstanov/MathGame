@@ -19,6 +19,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Controller of application
+ * @author Stahnov
+ * @version 1.0.0
+ */
 public class MainController implements Initializable {
 
     private static final String STRINGEXP = "Ваш опыт: ";
@@ -47,6 +52,9 @@ public class MainController implements Initializable {
         this.arrayLevels = arrayLevels;
     }
 
+    /**
+     * Initialize of controller
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources){
         list.addAll(new ArrayList<>(Arrays.asList("Синий фон", "Красный фон", "Желтый фон")));
@@ -224,6 +232,10 @@ public class MainController implements Initializable {
     public AnchorPane forwardfon;
 
     int fon = 1;
+
+    /**
+     * Changing the theme of the application by the user
+     */
     @FXML
     public void newFon(ActionEvent event){
         fon++;
@@ -285,6 +297,9 @@ public class MainController implements Initializable {
     @FXML
     public Label diffenough;
 
+    /**
+     * Changing the difficulty level with the output of subsequent errors
+     */
     @FXML
     public void click2(ActionEvent event) {
         if (!levelenough.isVisible()) {
@@ -319,6 +334,9 @@ public class MainController implements Initializable {
     @FXML
     public Label levelenough;
 
+    /**
+     * Change of the launched level with the output of subsequent errors
+     */
     @FXML
     public void click(ActionEvent event) {
         if(level < 9) {
@@ -373,6 +391,9 @@ public class MainController implements Initializable {
     @FXML
     public Button buttonReturn;
 
+    /**
+     * Launching the game itself
+     */
     @FXML
     public void click1(ActionEvent event){
         if(!levelenough.isVisible() && !diffenough.isVisible()) {
@@ -429,6 +450,9 @@ public class MainController implements Initializable {
     @FXML
     public Label question3;
 
+    /**
+     * Displaying a new level question for the user
+     */
     public synchronized void newQuestion(){
         hearts(lives);
         Generation gen = new Generation(level, difficult, arrayLevels);
@@ -461,6 +485,10 @@ public class MainController implements Initializable {
         praxisLeft--;
     }
 
+    /**
+     * Displaying the number of user attempts
+     * @param lives User attempts
+     */
     public void hearts(int lives){
         heart1.setVisible(true);
         heart11.setVisible(true);
@@ -482,7 +510,11 @@ public class MainController implements Initializable {
         }
     }
 
-
+    /**
+     * Generating number of level examples
+     * @param level selected level
+     * @return number of praxis
+     */
     public int numberOfLevels(int level){
         if(level != 0) {
             countOfPraxis.setVisible(true);
@@ -496,7 +528,7 @@ public class MainController implements Initializable {
                     praxis = praxis + 20;
                     countOfPraxis1.setVisible(true);
                 }
-                default ->{}
+                default -> praxis = 0;
             }
         }
         else{
@@ -505,10 +537,15 @@ public class MainController implements Initializable {
         return praxis;
     }
 
+    /**
+     * User input
+     */
     @FXML
     public void clickTextField(ActionEvent event){answer = mainTextField.getText();}
 
-
+    /**
+     * Event of entering the final answer to a question
+     */
     @FXML
     public void clickAnswer(ActionEvent event){
         if (mainTextField.getText() != null){
@@ -516,6 +553,9 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Event of entering the final answer to a question
+     */
     private void answerEvent(){
         answer = mainTextField.getText();
 
@@ -551,6 +591,9 @@ public class MainController implements Initializable {
         width = 200;
     }
 
+    /**
+     * Validating User-Entered Answer
+     */
     private void checkAnswer(){
         boolean flag = false;
         for(int i = 0; i < 6; i++){
@@ -562,6 +605,9 @@ public class MainController implements Initializable {
         answerIsRight = flag;
     }
 
+    /**
+     * Exit to the menu in infinite damage
+     */
     @FXML
     public void clickReturn(ActionEvent event){
         if(!returnBack){
@@ -573,6 +619,9 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Switch to game menu or vice versa
+     */
     public void changeMenu(boolean trueMax){
         mainMenu.setVisible(trueMax);
         mainMenu.setDisable(!trueMax);
@@ -586,6 +635,9 @@ public class MainController implements Initializable {
     @FXML
     public Rectangle timerRectangle;
 
+    /**
+     * Timer class for answering a question
+     */
     class Timer implements Runnable{
         @Override
         public void run() {

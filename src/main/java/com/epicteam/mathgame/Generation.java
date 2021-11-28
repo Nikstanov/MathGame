@@ -3,6 +3,11 @@ package com.epicteam.mathgame;
 import java.security.SecureRandom;
 import java.text.DecimalFormat;
 
+/**
+ * A class for generating game examples for the user
+ * @version 1.0.0
+ * @author Savenia
+ */
 public class Generation {
     int level;
     int difficult;
@@ -20,6 +25,12 @@ public class Generation {
     private static final SecureRandom ran = new SecureRandom();
     private static final DecimalFormat df = new DecimalFormat("###.##");
 
+    /**
+     * Class constructor
+     * @param level selected level
+     * @param difficult selected difficult
+     * @param arrayLevels Game progress
+     */
     public Generation(int level, int difficult, int[] arrayLevels){
         this.difficult = difficult;
         this.level = level;
@@ -27,6 +38,9 @@ public class Generation {
         generator();
     }
 
+    /**
+     * Generation type of question
+     */
     protected void generator(){
         int numberOfExample;
         if( level != 0) {
@@ -52,6 +66,10 @@ public class Generation {
         }
     }
 
+    /**
+     * Type of question if level is not 0
+     * @return type of question
+     */
     private int genNumOfExample0(){
         int numberOfExample = 1;
         if(difficult == 1) {
@@ -79,6 +97,10 @@ public class Generation {
         return numberOfExample;
     }
 
+    /**
+     * Type of question if level is 0
+     * @return type of question
+     */
     private int genNumOfExample1(){
         int numberOfExample = 1;
         if(difficult == 1) {
@@ -106,6 +128,11 @@ public class Generation {
         return numberOfExample;
     }
 
+    /**
+     * Generating a +- sign for a number
+     * @param number
+     * @return number with sing
+     */
     protected int znak(int number){
         int znak = ran.nextInt(2) + 1;
         if(znak == 2){
@@ -114,6 +141,9 @@ public class Generation {
         return number;
     }
 
+    /**
+     * Generating a simple equation
+     */
     protected void easyEquationsEasy(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
@@ -137,6 +167,9 @@ public class Generation {
         layoutQuestion1 = 145;
     }
 
+    /**
+     * Generating an example with fractions
+     */
     protected void fraction(){
         int b = ran.nextInt(10);
         while (b <= 1){
@@ -185,6 +218,9 @@ public class Generation {
         }
     }
 
+    /**
+     * Generating simple equations with non-integer roots
+     */
     protected void hardEquationsEasy(){
         double a = ran.nextInt(200)/10d - 10;
         while(a == 0) {
@@ -215,6 +251,9 @@ public class Generation {
         layoutQuestion1 = 145;
     }
 
+    /**
+     * Generating simple equations with large roots
+     */
     protected void hardEquationsHard(){
         int a = znak(ran.nextInt(80) + 21);
         int b = znak(ran.nextInt(80) + 21);
@@ -232,6 +271,9 @@ public class Generation {
         layoutQuestion1 = 145;
     }
 
+    /**
+     * Generating simple quadratic equations
+     */
     protected void quadEquationsEasy(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
@@ -274,6 +316,9 @@ public class Generation {
         answer0[1] = x2 + "," + x1;
     }
 
+    /**
+     * Generating quadratic equations with non-integer roots
+     */
     protected void quadEquationsHard(){
         double a = ran.nextInt(200)/10d - 10;
         while(a == 0) {
@@ -316,6 +361,9 @@ public class Generation {
         answer0[1] = df.format(x2) + ";" + df.format(x1);
     }
 
+    /**
+     * Generating cubic equations
+     */
     protected void cubicEquations(){
         int a = ran.nextInt(20) - 10;
         while(a == 0) {
@@ -382,8 +430,11 @@ public class Generation {
         answer0[5] = x3 + "," + x2 + "," + x1;
     }
 
+    /**
+     * Generating trigonometric equations
+     */
     protected void trigonEquations(){
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df1 = new DecimalFormat("#.##");
         double[] trigonNums = {0.0, 30.0, 45.0, 60.0, 90.0};
         String[] trigonNames = {"sin", "cos", "tg", "ctg"};
         int ranTrigonNum = (ran.nextInt(trigonNums.length));
@@ -423,11 +474,14 @@ public class Generation {
 
         question1 = "        " + trigonNames[ranTrigonName] + "(" + trigonNums[ranTrigonNum] + "°" + ")";
 
-        answer0[0] = String.format("%s",df.format(value));
+        answer0[0] = String.format("%s",df1.format(value));
     }
 
+    /**
+     * Generating logarithmic equations
+     */
     protected void logEquationsEasy(){
-        DecimalFormat df = new DecimalFormat("#");
+        DecimalFormat df2 = new DecimalFormat("#");
         int a = ran.nextInt(10 - 1 + 1) + 1;
         while (a == 1){
             a = ran.nextInt(10);
@@ -436,7 +490,7 @@ public class Generation {
         double b = Math.exp(x*Math.log(a));
         b = Math.round(b);
 
-        question1 = "    log" + a + "(x) = " + df.format(b);
+        question1 = "    log" + a + "(x) = " + df2.format(b);
 
         answer0[0] = String.format("%s",x);
     }

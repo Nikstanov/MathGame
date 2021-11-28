@@ -101,15 +101,7 @@ class GenerationTest {
 
         gen.quadEquationsEasy();
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
-
-        gen.trigonEquations();
-        assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
-
-        gen.trigonEquations();
-        assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
+        assertNotNull(gen.answer0[1]);
 
         gen.trigonEquations();
         assert(100 < gen.layoutQuestion2Y);
@@ -129,10 +121,10 @@ class GenerationTest {
 
         gen.quadEquationsHard();
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
+        assertNotNull(gen.answer0[1]);
 
         gen.cubicEquations();
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
+        assertNotNull(gen.answer0[2]);
     }
 }
