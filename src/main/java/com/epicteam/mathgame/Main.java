@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.scene.Parent;
 import java.io.FileReader;
@@ -57,7 +56,6 @@ public class Main extends Application {
                 for (int i = 0; i < 10; i++) {
                     arrayLevels[i] = Integer.parseInt(scan.nextLine());
                 }
-                fr.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
