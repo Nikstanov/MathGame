@@ -341,7 +341,7 @@ public class MainController implements Initializable {
         }
 
         if(level != 0) {
-            if (arrayLevels[level] < 1) {
+            if (arrayLevels[level - 1] < 1) {
                 levelenough.setText("Предыдущий уровень");
                 levelenough.setVisible(true);
                 levelenough.setLayoutX(50);
@@ -431,7 +431,7 @@ public class MainController implements Initializable {
 
     public synchronized void newQuestion(){
         hearts(lives);
-        Generation gen = new Generation(level, difficult);
+        Generation gen = new Generation(level, difficult, arrayLevels);
         question1.setText(gen.question1);
         question1.setLayoutX(gen.layoutQuestion1);
         question2.setText(gen.question2);
@@ -516,7 +516,7 @@ public class MainController implements Initializable {
         }
     }
 
-    public void answerEvent(){
+    private void answerEvent(){
         answer = mainTextField.getText();
 
         answerIsRight = false;
@@ -551,7 +551,7 @@ public class MainController implements Initializable {
         width = 200;
     }
 
-    public void checkAnswer(){
+    private void checkAnswer(){
         boolean flag = false;
         for(int i = 0; i < 6; i++){
             if (answer0[i] != null && answer.equals(answer0[i])) {

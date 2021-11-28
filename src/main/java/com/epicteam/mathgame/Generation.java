@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 public class Generation {
     int level;
     int difficult;
+    int[] arrayLevels;
     int layoutQuestion2 = 140;
     int layoutQuestion1 = 115;
     int layoutQuestion3 = 150;
@@ -17,21 +18,48 @@ public class Generation {
     protected String[] answer0 = new String[]{null,null,null,null,null,null};
 
     private static final SecureRandom ran = new SecureRandom();
+    private static final DecimalFormat df = new DecimalFormat("###.##");
 
-    public Generation(int level, int difficult){
+    public Generation(int level, int difficult, int[] arrayLevels){
         this.difficult = difficult;
         this.level = level;
-        generator(level,difficult);
+        this.arrayLevels = arrayLevels;
+        generator();
     }
 
-    protected void generator(int level, int difficult){
+    protected void generator(){
+        int numberOfExample;
+        if( level != 0) {
+            numberOfExample = genNumOfExample0();
+        }
+        else{
+            numberOfExample = genNumOfExample1();
+        }
+        switch (numberOfExample) {
+            case 1 -> easyEquationsEasy();
+            case 2 -> fraction();
+            case 3 -> quadEquationsEasy();
+            case 5 -> trigonEquations();
+            case 6 -> logEquationsEasy();
+            case 7 -> hardEquationsEasy();
+            case 8 -> hardEquationsHard();
+            case 9 -> quadEquationsHard();
+            case 10 -> cubicEquations();
+            default -> {
+                question1 = "В разработке";
+                answer0[0] = "0";
+            }
+        }
+    }
+
+    private int genNumOfExample0(){
         int numberOfExample = 1;
         if(difficult == 1) {
             if (6 < level) {
-                numberOfExample = ran.nextInt(2) + 9;
+                numberOfExample = ran.nextInt(2) + 5;
             }
             else if (3 < level) {
-                numberOfExample = ran.nextInt(2) + 5;
+                numberOfExample = ran.nextInt(2) + 3;
             }
             else if (0 < level) {
                 numberOfExample = ran.nextInt(2) + 1;
@@ -42,28 +70,41 @@ public class Generation {
                 numberOfExample = ran.nextInt(2) + 11;
             }
             else if (3 < level) {
-                numberOfExample = ran.nextInt(2)+ 7;
+                numberOfExample = ran.nextInt(2)+ 9;
             }
             else if (0 < level) {
-                numberOfExample = ran.nextInt(2) + 3;
+                numberOfExample = ran.nextInt(2) + 7;
             }
         }
-        switch (numberOfExample) {
-            case 1 -> easyEquationsEasy();
-            case 2 -> fraction();
-            case 3 -> hardEquationsEasy();
-            case 4 -> hardEquationsHard();
-            case 5 -> quadEquationsEasy();
-            case 6 -> cubicEquations();
-            case 7 -> trigonEquations();
-            case 8 -> logEquationsEasy();
-            default -> {
-                question1 = "В разработке";
-                answer0[0] = "0";
-            }
-        }
+        return numberOfExample;
     }
 
+    private int genNumOfExample1(){
+        int numberOfExample = 1;
+        if(difficult == 1) {
+            if (arrayLevels[7] > 0) {
+                numberOfExample = ran.nextInt(6) + 1;
+            }
+            else if (arrayLevels[4] > 0) {
+                numberOfExample = ran.nextInt(4) + 1;
+            }
+            else if (arrayLevels[1] > 0) {
+                numberOfExample = ran.nextInt(2) + 1;
+            }
+        }
+        else {
+            if (arrayLevels[7] > 1) {
+                numberOfExample = ran.nextInt(6) + 7;
+            }
+            else if (arrayLevels[4] > 1) {
+                numberOfExample = ran.nextInt(4)+ 7;
+            }
+            else if (arrayLevels[1] > 1) {
+                numberOfExample = ran.nextInt(2) + 7;
+            }
+        }
+        return numberOfExample;
+    }
 
     protected int znak(int number){
         int znak = ran.nextInt(2) + 1;
@@ -145,7 +186,6 @@ public class Generation {
     }
 
     protected void hardEquationsEasy(){
-        DecimalFormat df = new DecimalFormat("###.##");
         double a = ran.nextInt(200)/10d - 10;
         while(a == 0) {
             a = ran.nextInt(200)/10d - 10;
@@ -232,6 +272,48 @@ public class Generation {
         question2 = "2";
         answer0[0] = x1 + "," + x2;
         answer0[1] = x2 + "," + x1;
+    }
+
+    protected void quadEquationsHard(){
+        double a = ran.nextInt(200)/10d - 10;
+        while(a == 0) {
+            a = ran.nextInt(200)/10d - 10;
+        }
+        double x1 = ran.nextInt(200)/10d - 10;
+        double x2 = ran.nextInt(200)/10d - 10;
+
+        if(Math.abs(a) == 1){
+            question1 = "   x";
+        }
+        else{
+            question1 = df.format(a) + "x";
+        }
+        if(-(x1+x2)*a < 0){
+            question1 = question1 + " - " + df.format((x1+x2)*a) + "x";
+        }
+        else{
+            if(-(x1+x2)*a != 0) {
+                question1 = question1 + " + " + df.format(-(x1 + x2) * a) + "x";
+            }
+        }
+        if(a*x1*x2 < 0){
+            question1 = question1 + " - " + df.format(-a*x1*x2) + " = 0";
+        }
+        else{
+            if(a*x1*x2 != 0 ) {
+                question1 = question1 + " + " + df.format(a * x1 * x2) + " = 0";
+            }
+        }
+
+        if(a < 0){
+            layoutQuestion2 = 147;
+            if(a == -10){
+                layoutQuestion2 = layoutQuestion2 + 11;
+            }
+        }
+        question2 = "2";
+        answer0[0] = df.format(x1) + ";" + df.format(x2);
+        answer0[1] = df.format(x2) + ";" + df.format(x1);
     }
 
     protected void cubicEquations(){
