@@ -44,11 +44,7 @@ public class Main extends Application {
         super.stop();
 
         stage.setOnCloseRequest(windowEvent -> {
-            try {
-                saveData(controller);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            saveData(controller);
             System.exit(0);
         });
     }
@@ -64,23 +60,19 @@ public class Main extends Application {
         }
     }
 
-    public void saveData(MainController controller) throws IOException {
+    public void saveData(MainController controller){
         if (controller.praxisLeft != 0 && controller.level != 0 && controller.exp >= 200){
             controller.exp = controller.exp - 200;
         }
-        FileWriter fw = null;
         try {
-            fw = new FileWriter("preservation.txt");
+            FileWriter fw = new FileWriter("preservation.txt");
             fw.write(controller.exp+"\n");
             for(int i = 0;i < 10;i++){
                 fw.write(controller.arrayLevels[i] + "\n");
             }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            assert fw != null;
             fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
