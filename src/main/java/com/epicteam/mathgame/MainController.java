@@ -16,6 +16,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
 import java.io.File;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
@@ -251,7 +252,14 @@ public class MainController implements Initializable {
     private ImageView boardInGame1;
 
     int fon = 1;
+    Font tahoma1 = new Font("Tahoma Bold",14);
+    Font tahoma2 = new Font("Tahoma Bold",20);
+    String currentFontFile = "DS Eraser Cyr Font.ttf";
+    InputStream fontStream = Generation.class.getResourceAsStream(currentFontFile);
+    Font fontBoard = Font.loadFont(fontStream,12);
 
+    InputStream fontStream1 = Generation.class.getResourceAsStream(currentFontFile);
+    Font fontBoard1 = Font.loadFont(fontStream1,17);
     /**
      * Changing the theme of the application by the user
      */
@@ -263,47 +271,57 @@ public class MainController implements Initializable {
         }
         switch (fon) {
             case 1 -> {
+                forwardfon.setVisible(true);
                 boardInGame.setVisible(false);
                 boardInGame1.setVisible(false);
                 String settings1 = "-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
+                changeStyle(tahoma1, tahoma2, settings1);
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#0098dc, #0cf1ff);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #0098dc; -fx-background-radius: 5;");
                 backfon.setStyle("-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;");
-                startButton.setStyle(settings1);
-                hardbutton.setStyle(settings1);
-                levelbutton.setStyle(settings1);
-                answerButton.setStyle(settings1);
-                buttonReturn.setStyle(settings1);
-                expmenu.setStyle(settings1);
-                anotherfon.setStyle(settings1);
             }
             case 2 -> {
+                String settings2 = "-fx-background-color: green; -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
+                changeStyle(fontBoard, fontBoard1, settings2);
                 boardInGame.setVisible(true);
                 boardInGame1.setVisible(true);
+                forwardfon.setVisible(false);
             }
             case 3 -> {
+                expmenu.setFont(tahoma1);
+                anotherfon.setFont(tahoma1);
+                forwardfon.setVisible(true);
                 boardInGame.setVisible(false);
                 boardInGame1.setVisible(false);
                 String settings3 = "-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;";
+                changeStyle(tahoma1, tahoma2, settings3);
                 anotherfon.setStyle("-fx-background-radius: 30; -fx-background-color: linear-gradient(#ffc825, #ffeb57);");
                 anotherfon.setTextFill(Color.WHITE);
                 forwardfon.setStyle("-fx-background-color: #ffc825; -fx-background-radius: 5;");
                 backfon.setStyle("-fx-background-color: linear-gradient(#ffc825, #ffeb57); -fx-background-radius: 5;");
-                startButton.setStyle(settings3);
-                hardbutton.setStyle(settings3);
-                levelbutton.setStyle(settings3);
-                answerButton.setStyle(settings3);
-                buttonReturn.setStyle(settings3);
-                expmenu.setStyle(settings3);
-                anotherfon.setStyle(settings3);
             }
             default -> anotherfon.setText("Ошибка");
         }
         anotherfon.setText(list.get(fon - 1));
     }
 
-
+    private void changeStyle(Font font1, Font font2, String settings){
+        startButton.setStyle(settings);
+        hardbutton.setStyle(settings);
+        levelbutton.setStyle(settings);
+        answerButton.setStyle(settings);
+        buttonReturn.setStyle(settings);
+        expmenu.setStyle(settings);
+        anotherfon.setStyle(settings);
+        startButton.setFont(font2);
+        levelbutton.setFont(font2);
+        hardbutton.setFont(font1);
+        answerButton.setFont(font1);
+        buttonReturn.setFont(font1);
+        expmenu.setFont(font1);
+        anotherfon.setFont(font1);
+    }
     @FXML
     public Button hardbutton;
 
@@ -322,8 +340,8 @@ public class MainController implements Initializable {
                 difficult = 2;
                 needexp = 200 * (level - 1) + 100;
 
-                if (arrayLevels[level] != 2  && level != 0) {
-                    diffenough.setLayoutX(202);
+                if (arrayLevels[level - 1] != 2  && level != 0) {
+                    diffenough.setLayoutX(214);
                     diffenough.setText("Пройди хотя бы 2 раза на легком");
                     diffenough.setVisible(true);
                 }
@@ -331,7 +349,7 @@ public class MainController implements Initializable {
                     if(needexp > exp && level != 0){
                         diffenough.setText("Недостаточно опыта:" +needexp);
                         diffenough.setVisible(true);
-                        diffenough.setLayoutX(220);
+                        diffenough.setLayoutX(232);
                     }
                 }
             } else {
@@ -375,10 +393,10 @@ public class MainController implements Initializable {
             if (arrayLevels[level - 1] < 1) {
                 levelenough.setText("Предыдущий уровень");
                 levelenough.setVisible(true);
-                levelenough.setLayoutX(50);
+                levelenough.setLayoutX(35);
             } else {
                 if (exp < needexp) {
-                    levelenough.setLayoutX(79);
+                    levelenough.setLayoutX(64);
                     levelenough.setText("Опыт: " + needexp);
                     levelenough.setVisible(true);
                 }
@@ -483,8 +501,8 @@ public class MainController implements Initializable {
             if(level != 0) {
                 exp = exp + 200;
             }
-            if (arrayLevels[level] < 2){
-                arrayLevels[level]++;
+            if (arrayLevels[level - 1] < 2){
+                arrayLevels[level - 1]++;
             }
             changeMenu(true);
         }
@@ -533,7 +551,7 @@ public class MainController implements Initializable {
             countOfPraxis.setVisible(true);
             praxis = 20;
             switch (level % 3) {
-                case 1 -> {
+                case 2 -> {
                     praxis = praxis + 10;
                     countOfPraxis1.setVisible(true);
                 }
@@ -541,7 +559,6 @@ public class MainController implements Initializable {
                     praxis = praxis + 20;
                     countOfPraxis1.setVisible(true);
                 }
-                default -> answerButton.setText("Some troubles");
             }
         }
         else{

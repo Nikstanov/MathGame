@@ -59,6 +59,7 @@ public class Generation {
             case 8 -> hardEquationsHard();
             case 9 -> quadEquationsHard();
             case 10 -> cubicEquations();
+            case 11 -> logEquationHard();
             default -> {
                 question1 = "В разработке";
                 answer0[0] = "0";
@@ -283,7 +284,7 @@ public class Generation {
         int x2 = ran.nextInt(20) - 10;
 
         if(Math.abs(a) == 1){
-            question1 = "   x";
+            question1 = "x";
         }
         else{
             question1 = a + "x";
@@ -297,13 +298,14 @@ public class Generation {
             }
         }
         if(a*x1*x2 < 0){
-            question1 = question1 + " - " + -a*x1*x2 + " = 0";
+            question1 = question1 + " - " + -a*x1*x2;
         }
         else{
             if(a*x1*x2 != 0 ) {
-                question1 = question1 + " + " + a * x1 * x2 + " = 0";
+                question1 = question1 + " + " + a * x1 * x2;
             }
         }
+        question1 = question1 + " = 0";
 
         if(a < 0){
             layoutQuestion2 = 147;
@@ -435,15 +437,22 @@ public class Generation {
      */
     protected void trigonEquations(){
         DecimalFormat df1 = new DecimalFormat("#.##");
-        double[] trigonNums = {0.0, 30.0, 45.0, 60.0, 90.0};
+        double[][] trigonNums = {{0.0,30.0,90.0,150.0},{90.0,60.0,0.0, 120.0},{0.0,45.0,135.0},{90.0,45.0,135.0}};
         String[] trigonNames = {"sin", "cos", "tg", "ctg"};
-        int ranTrigonNum = (ran.nextInt(trigonNums.length));
-        int ranTrigonName = (ran.nextInt(trigonNames.length));
+        int ranTrigonName = (ran.nextInt(4));
+        int ranTrigonNum;
+        if(ranTrigonName < 2){
+            ranTrigonNum = (ran.nextInt(4));
+        }
+        else{
+            ranTrigonNum = (ran.nextInt(3));
+        }
+        int more = ran.nextInt(5) + 1;
         String sin = "sin";
         String cos = "cos";
         String tg = "tg";
         String ctg = "ctg";
-        double rad = Math.toRadians(trigonNums[ranTrigonNum]);
+        double rad = Math.toRadians(trigonNums[ranTrigonName][ranTrigonNum] + more * 180.0);
         double value = 0;
 
 
@@ -454,35 +463,25 @@ public class Generation {
             value = value + Math.cos(rad);
         }
         else if(trigonNames[ranTrigonName].equals(tg)){
-            while (trigonNums[ranTrigonNum] >= 90.0){
-                ranTrigonNum = (ran.nextInt(trigonNums.length));
-                rad = Math.toRadians(trigonNums[ranTrigonNum]);
-                value = value + Math.tan(rad);
-            }
             value = value + Math.tan(rad);
         }
         else if(trigonNames[ranTrigonName].equals(ctg)){
-            while (trigonNums[ranTrigonNum] <= 0.0){
-                ranTrigonNum = (ran.nextInt(trigonNums.length));
-                rad = Math.toRadians(trigonNums[ranTrigonNum]);
-                value = value + 1.0 / Math.tan(rad);
-            }
             value = value + 1.0 / Math.tan(rad);
         }
 
         value = Math.round(value * 100.0) / 100.0;
 
-        question1 = "        " + trigonNames[ranTrigonName] + "(" + trigonNums[ranTrigonNum] + "°" + ")";
+        question1 = "        " + trigonNames[ranTrigonName] + "(" + (trigonNums[ranTrigonName][ranTrigonNum] + more * 180.0) + "°" + ")";
 
         answer0[0] = String.format("%s",df1.format(value));
     }
 
+    DecimalFormat df2 = new DecimalFormat("#####");
     /**
      * Generating logarithmic equations
      */
     protected void logEquationsEasy(){
-        DecimalFormat df2 = new DecimalFormat("#");
-        int a = ran.nextInt(10 - 1 + 1) + 1;
+        int a = ran.nextInt(10) + 1;
         while (a == 1){
             a = ran.nextInt(10);
         }
@@ -494,4 +493,58 @@ public class Generation {
 
         answer0[0] = String.format("%s",x);
     }
+
+    protected  void logEquationHard(){
+        int a1 = ran.nextInt(5) + 1;
+        while (a1 == 1){
+            a1 = ran.nextInt(5) + 1;
+        }
+        int x11 = ran.nextInt(5);
+        int x22 = ran.nextInt(5);
+        double x1 = Math.exp(x11*Math.log(a1));
+        double x2 = Math.exp(x22*Math.log(a1));
+        x1 = Math.round(x1);
+        x2 = Math.round(x2);
+        int a = ran.nextInt(10) - 5;
+        while(a == 0) {
+            a = ran.nextInt(10) - 5;
+        }
+
+        String str = "log" + a1 + "(x)";
+        if(Math.abs(a) == 1){
+            question1 = str;
+            layoutQuestion1 = 50;
+        }
+        else{
+            question1 = df2.format(a) + str;
+        }
+        if(-(x1+x2)*a < 0){
+            question1 = question1 + " - " + df2.format((x1+x2)*a) + str;
+        }
+        else{
+            if(-(x1+x2)*a != 0) {
+                question1 = question1 + " + " + df2.format(-(x1 + x2) * a) + str;
+            }
+        }
+        if(a*x1*x2 < 0){
+            question1 = question1 + " - " + df2.format(-a*x1*x2);
+        }
+        else{
+            if(a*x1*x2 != 0 ) {
+                question1 = question1 + " + " + df2.format(a * x1 * x2);
+            }
+        }
+        question1 = question1 + " = 0";
+
+        layoutQuestion1 = 35;
+
+        question2 = "2";
+        layoutQuestion2 = 115;
+        if (a <= 0.001){
+            layoutQuestion2 = layoutQuestion2 - 15;
+        }
+        answer0[0] = x11 + "," + x22;
+        answer0[1] = x22 + "," + x11;
+    }
+
 }

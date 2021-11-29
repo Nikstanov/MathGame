@@ -48,7 +48,7 @@ public class Main extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Математический тренажер");
+        stage.setTitle("MathGame");
         stage.setWidth(400);
         stage.setHeight(500);
         stage.setResizable(false);
