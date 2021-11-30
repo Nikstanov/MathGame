@@ -550,10 +550,10 @@ public class MainController implements Initializable {
             countOfPraxis.setVisible(true);
             praxis = 20;
             if (level % 3 == 0) {
-                    praxis = praxis + 10;
-            }
-            else {
                     praxis = praxis + 20;
+            }
+            if (level % 3 == 1) {
+                praxis = praxis + 10;
             }
             countOfPraxis1.setVisible(true);
         }
