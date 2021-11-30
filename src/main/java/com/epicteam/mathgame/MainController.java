@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -59,7 +58,7 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        list.addAll(new ArrayList<>(Arrays.asList("Синий фон", "Красный фон", "Желтый фон")));
+        list.addAll(new ArrayList<>(Arrays.asList("Синий фон", "Учебный фон", "Желтый фон")));
         mainMenu.setDisable(false);
         gameMenu.setDisable(true);
         mainMenu.setVisible(true);
@@ -550,16 +549,13 @@ public class MainController implements Initializable {
         if(level != 0) {
             countOfPraxis.setVisible(true);
             praxis = 20;
-            switch (level % 3) {
-                case 2 -> {
+            if (level % 3 == 0) {
                     praxis = praxis + 10;
-                    countOfPraxis1.setVisible(true);
-                }
-                case 0 -> {
-                    praxis = praxis + 20;
-                    countOfPraxis1.setVisible(true);
-                }
             }
+            else {
+                    praxis = praxis + 20;
+            }
+            countOfPraxis1.setVisible(true);
         }
         else{
             praxis = -10;
@@ -678,9 +674,15 @@ public class MainController implements Initializable {
                     timerRectangle.setFill(Color.rgb(146,168,25));
                 }
                 switch (width) {
-                    case 150 -> timerRectangle.setFill(Color.rgb(255, 213, 0));
-                    case 100 -> timerRectangle.setFill(Color.rgb(239, 165, 16));
-                    case 50 -> timerRectangle.setFill(Color.rgb(232, 12, 12));
+                    case 150:
+                        timerRectangle.setFill(Color.rgb(255, 213, 0));
+                        break;
+                    case 100:
+                        timerRectangle.setFill(Color.rgb(239, 165, 16));
+                        break;
+                    case 50:
+                        timerRectangle.setFill(Color.rgb(232, 12, 12));
+                        break;
                 }
                 try {
                     Thread.sleep(330);
