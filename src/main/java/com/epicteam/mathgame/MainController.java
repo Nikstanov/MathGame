@@ -683,6 +683,8 @@ public class MainController implements Initializable {
                     case 50:
                         timerRectangle.setFill(Color.rgb(232, 12, 12));
                         break;
+                    default:
+                        break;
                 }
                 try {
                     Thread.sleep(330);
