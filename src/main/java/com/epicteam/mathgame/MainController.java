@@ -339,7 +339,7 @@ public class MainController implements Initializable {
                 difficult = 2;
                 needexp = 200 * (level - 1) + 100;
 
-                if (arrayLevels[level - 1] != 2  && level != 0) {
+                if (level != 0  && arrayLevels[level - 1] != 2) {
                     diffenough.setLayoutX(214);
                     diffenough.setText("Пройди хотя бы 2 раза на легком");
                     diffenough.setVisible(true);

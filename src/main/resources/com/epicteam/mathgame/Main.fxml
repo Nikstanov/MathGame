@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="backfon" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;" visible="false">
+    <AnchorPane fx:id="gameMenu" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;">
       <ImageView fx:id="boardInGame" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" visible="false" />
       <ImageView fx:id="elPrimo" fitHeight="95.0" fitWidth="83.0" layoutX="36.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" />
         <TextField fx:id="mainTextField" alignment="CENTER" layoutX="100.0" layoutY="340.0" onAction="#clickTextField" prefColumnCount="11" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 30;">
@@ -34,9 +34,9 @@
                 <Font name="Tahoma Bold" size="14.0" />
             </font></Button>
         <Rectangle fx:id="timerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ffffff" height="12.0" layoutX="100.0" layoutY="314.0" stroke="#ffffff" strokeType="INSIDE" width="200.0" />
-        <Label fx:id="question2" layoutX="125.0" layoutY="266.0" text="Всякие знаки и приколдесы" textFill="WHITE">
+        <Label fx:id="question2" layoutX="96.0" layoutY="222.0" text="{" textFill="WHITE">
             <font>
-                <Font size="20.0" />
+                <Font size="64.0" />
             </font></Label>
         <Label fx:id="question3" layoutX="115.0" layoutY="246.0" text="циферки" textFill="WHITE">
             <font>
@@ -100,7 +100,7 @@
                 <ImageView fx:id="heart111" fitHeight="26.0" fitWidth="29.0" layoutX="13.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
             </children></AnchorPane>
     </AnchorPane>
-    <AnchorPane fx:id="mainMenu" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;">
+    <AnchorPane fx:id="mainMenu" prefHeight="500.0" prefWidth="400.0" style="-fx-background-radius: 5;" visible="false">
       <ImageView fx:id="boardInGame1" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" visible="false" />
         <Button fx:id="startButton" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#click1" prefHeight="68.0" prefWidth="362.0" style="-fx-background-color: linear-gradient(#0098dc, #0cf1ff); -fx-background-radius: 30; -fx-background-insets: 0; -fx-text-fill: white;" text="Старт" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0">
             <font>

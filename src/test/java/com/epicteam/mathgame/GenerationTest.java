@@ -23,7 +23,6 @@ class GenerationTest {
 
         gen = new Generation(1,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
-        assertNotNull(gen.answer0[0]);
 
         gen = new Generation(2,2, new int[]{2,2,2,2,2,2,2,2,2,2});
         assert(100 < gen.layoutQuestion2Y);
@@ -123,5 +122,8 @@ class GenerationTest {
         gen.cubicEquations();
         assert(100 < gen.layoutQuestion2Y);
         assertNotNull(gen.answer0[2]);
+
+        gen.systemOfEquations();
+
     }
 }

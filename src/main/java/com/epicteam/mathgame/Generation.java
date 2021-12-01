@@ -53,6 +53,7 @@ public class Generation {
             case 1 -> easyEquationsEasy();
             case 2 -> fraction();
             case 3 -> quadEquationsEasy();
+            case 4 -> systemOfEquations();
             case 5 -> trigonEquations();
             case 6 -> logEquationsEasy();
             case 7 -> hardEquationsEasy();
@@ -86,7 +87,7 @@ public class Generation {
         }
         else {
             if (6 < level) {
-                numberOfExample = ran.nextInt(2) + 11;
+                numberOfExample = ran.nextInt(1) + 11;
             }
             else if (3 < level) {
                 numberOfExample = ran.nextInt(2)+ 9;
@@ -117,7 +118,7 @@ public class Generation {
         }
         else {
             if (arrayLevels[7] > 1) {
-                numberOfExample = ran.nextInt(6) + 7;
+                numberOfExample = ran.nextInt(5) + 7;
             }
             else if (arrayLevels[4] > 1) {
                 numberOfExample = ran.nextInt(4)+ 7;
@@ -166,6 +167,74 @@ public class Generation {
         question1 = question1 + " = " + (a*x + b);
         answer0[0] = String.format("%s",x);
         layoutQuestion1 = 145;
+    }
+
+    /**
+     * Generates a system of simple equations
+     */
+    protected void systemOfEquations(){
+        int a = ran.nextInt(20) - 10;
+        while(a == 0) {
+            a = ran.nextInt(20) - 10;
+        }
+        int x = ran.nextInt(20) - 10;
+        int b = ran.nextInt(20) - 10;
+        while(b == 0) {
+            b = ran.nextInt(20) - 10;
+        }
+        int y = ran.nextInt(20) - 10;
+
+        if(a != 1) {
+            question1 = a + "x";
+        }
+        else{
+            question1 = "x";
+        }
+        if(Math.abs(b) != 1) {
+            if (b < 0) {
+                question1 = question1 + " - " + -b;
+            } else {
+                question1 = question1 + " - " + b;
+
+            }
+        }
+        question1 = question1 + "y";
+        question1 = question1 + " = " + (a*x + b*y);
+
+        a = ran.nextInt(20) - 10;
+        while(a == 0) {
+            a = ran.nextInt(20) - 10;
+        }
+        b = ran.nextInt(20) - 10;
+        while(b == 0) {
+            b = ran.nextInt(20) - 10;
+        }
+
+        if(a != 1) {
+            question3 = a + "x";
+        }
+        else{
+            question3 = "x";
+        }
+        if(Math.abs(b) != 1) {
+            if (b < 0) {
+                question3 = question3 + " - " + -b;
+            } else {
+                question3 = question3 + " - " + b;
+
+            }
+        }
+        question3 = question3 + "y";
+        question3 = question3 + " = " + (a*x + b*y);
+        layoutQuestion3 = 115;
+
+        question2 ="{";
+        question2Font = 64;
+        layoutQuestion2 = 96;
+        layoutQuestion2Y = 222;
+
+        answer0[0] = x + "," + y;
+        answer0[1] = y + "," + x;
     }
 
     /**
@@ -352,11 +421,16 @@ public class Generation {
             }
         }
 
+
         if(a < 0){
             layoutQuestion2 = 147;
             if(a == -10){
                 layoutQuestion2 = layoutQuestion2 + 11;
             }
+        }
+        double fractionalPart = a % 1;
+        if(fractionalPart != 0){
+            layoutQuestion2 = layoutQuestion2 + 11;
         }
         question2 = "2";
         answer0[0] = df.format(x1) + ";" + df.format(x2);
@@ -499,18 +573,22 @@ public class Generation {
         while (a1 == 1){
             a1 = ran.nextInt(5) + 1;
         }
-        int x11 = ran.nextInt(5);
-        int x22 = ran.nextInt(5);
+        int x11 = ran.nextInt(6);
+        int x22 = ran.nextInt(6);
+        if(a1 > 3){
+            x11 = ran.nextInt(3);
+            x22 = ran.nextInt(3);
+        }
         double x1 = Math.exp(x11*Math.log(a1));
         double x2 = Math.exp(x22*Math.log(a1));
         x1 = Math.round(x1);
         x2 = Math.round(x2);
-        int a = ran.nextInt(10) - 5;
+        int a = ran.nextInt(11) - 5;
         while(a == 0) {
-            a = ran.nextInt(10) - 5;
+            a = ran.nextInt(11) - 5;
         }
 
-        String str = "log" + a1 + "(x)";
+        String str = "(log" + a1 + "(x))";
         if(Math.abs(a) == 1){
             question1 = str;
             layoutQuestion1 = 50;
@@ -539,9 +617,9 @@ public class Generation {
         layoutQuestion1 = 35;
 
         question2 = "2";
-        layoutQuestion2 = 115;
-        if (a <= 0.001){
-            layoutQuestion2 = layoutQuestion2 - 15;
+        layoutQuestion2 = 128;
+        if (Math.abs(a) <= 1.001){
+            layoutQuestion2 = layoutQuestion2 - 18;
         }
         answer0[0] = x11 + "," + x22;
         answer0[1] = x22 + "," + x11;
