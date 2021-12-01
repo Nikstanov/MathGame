@@ -1,3 +1,6 @@
+/**
+ * Module's requires
+ */
 module com.epicteam.mathgame {
     requires javafx.swing;
     requires javafx.controls;

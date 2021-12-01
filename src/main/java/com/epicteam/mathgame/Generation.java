@@ -518,7 +518,7 @@ public class Generation {
      * Generating trigonometric equations
      */
     protected void trigonEquations(){
-        DecimalFormat df1 = new DecimalFormat("#.##");
+        DecimalFormat df1 = new DecimalFormat("###");
         double[][] trigonNums = {{0.0,30.0,90.0,150.0},{90.0,60.0,0.0, 120.0},{0.0,45.0,135.0},{90.0,45.0,135.0}};
         String[] trigonNames = {"sin", "cos", "tg", "ctg"};
         int ranTrigonName = (ran.nextInt(4));
@@ -567,13 +567,11 @@ public class Generation {
         while (a == 1){
             a = ran.nextInt(10);
         }
-        int x = ran.nextInt(5);
-        double b = Math.exp(x*Math.log(a));
-        b = Math.round(b);
+        int b = ran.nextInt(5) + 1;
+        double x = Math.pow(a,b);
 
         question1 = "    log" + a + "(x) = " + df2.format(b);
-
-        answer0[0] = String.format("%s",x);
+        answer0[0] = df2.format(x);
     }
 
     protected  void logEquationHard(){
@@ -581,16 +579,16 @@ public class Generation {
         while (a1 == 1){
             a1 = ran.nextInt(5) + 1;
         }
-        int x11 = ran.nextInt(6);
-        int x22 = ran.nextInt(6);
+        int x1 = ran.nextInt(6);
+        int x2 = ran.nextInt(6);
         if(a1 > 3){
-            x11 = ran.nextInt(3);
-            x22 = ran.nextInt(3);
+            x1 = ran.nextInt(3);
+            x2 = ran.nextInt(3);
         }
-        double x1 = Math.exp(x11*Math.log(a1));
-        double x2 = Math.exp(x22*Math.log(a1));
-        x1 = Math.round(x1);
-        x2 = Math.round(x2);
+        double x11 = Math.pow(a1,x1);
+        double x22 = Math.pow(a1,x2);
+        x11 = Math.round(x11);
+        x22 = Math.round(x22);
         int a = ran.nextInt(11) - 5;
         while(a == 0) {
             a = ran.nextInt(11) - 5;
@@ -605,19 +603,19 @@ public class Generation {
             question1 = df2.format(a) + str;
         }
         if(-(x1+x2)*a < 0){
-            question1 = question1 + " - " + df2.format((x1+x2)*a) + str;
+            question1 = question1 + " - " + df2.format((long) (x1 + x2) *a) + str;
         }
         else{
             if(-(x1+x2)*a != 0) {
-                question1 = question1 + " + " + df2.format(-(x1 + x2) * a) + str;
+                question1 = question1 + " + " + df2.format((long) -(x1 + x2) * a) + str;
             }
         }
         if(a*x1*x2 < 0){
-            question1 = question1 + " - " + df2.format(-a*x1*x2);
+            question1 = question1 + " - " + df2.format((long) -a *x1*x2);
         }
         else{
             if(a*x1*x2 != 0 ) {
-                question1 = question1 + " + " + df2.format(a * x1 * x2);
+                question1 = question1 + " + " + df2.format((long) a * x1 * x2);
             }
         }
         question1 = question1 + " = 0";
@@ -629,8 +627,11 @@ public class Generation {
         if (Math.abs(a) <= 1.001){
             layoutQuestion2 = layoutQuestion2 - 18;
         }
-        answer0[0] = x11 + "," + x22;
-        answer0[1] = x22 + "," + x11;
+        answer0[0] = df.format(x11) + "," + df.format(x22);
+        answer0[1] = df.format(x22) + "," + df.format(x11);
+        if(x11 == x2){
+            answer0[2] = df.format(x11) + "";
+        }
     }
 
 }
