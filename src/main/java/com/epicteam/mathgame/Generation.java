@@ -175,7 +175,7 @@ public class Generation {
     protected void systemOfEquations(){
         int a = ran.nextInt(20) - 10;
         int a1 = ran.nextInt(20) - 10;
-        while(a == 0 || a1 == 0) {
+        while((a + a1) == 0) {
             a = ran.nextInt(20) - 10;
             a1 = ran.nextInt(20) - 10;
         }
