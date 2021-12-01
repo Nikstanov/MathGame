@@ -507,8 +507,8 @@ public class MainController implements Initializable {
         }
         if(lives == 0){
             changeMenu(true);
-            if(level != 0 && exp > 0){
-                exp = exp - 400;
+            if(level != 0 && exp > 400){
+                exp = exp - 200;
             }
         }
         expmenu.setText(STRINGEXP + exp);

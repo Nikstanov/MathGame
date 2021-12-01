@@ -489,7 +489,7 @@ public class Generation {
         question1 = question1 + " = 0";
 
         if(a < 0){
-            layoutQuestion2 = 147;
+            layoutQuestion2 = 90;
             if(a == -10){
                 layoutQuestion2 = layoutQuestion2 + 11;
             }
@@ -505,6 +505,7 @@ public class Generation {
         if(Math.abs(d) > 100){
             question2 = question2 + "    ";
         }
+        layoutQuestion1 = 60;
         question2 = question2 + "2";
         answer0[0] = x1 + "," + x2 + "," + x3;
         answer0[1] = x1 + "," + x3 + "," + x2;
