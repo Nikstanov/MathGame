@@ -494,8 +494,6 @@ public class MainController implements Initializable {
         question2.setLayoutY(gen.layoutQuestion2Y);
         question3.setLayoutX(gen.layoutQuestion3);
         question3.setText(gen.question3);
-        answer0 = gen.answer0;
-        mainTextField.setText(answer0[0]);
         if(praxisLeft == 0) {
             if(level != 0) {
                 exp = exp + 200;
