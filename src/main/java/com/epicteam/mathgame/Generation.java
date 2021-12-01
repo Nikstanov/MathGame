@@ -174,8 +174,10 @@ public class Generation {
      */
     protected void systemOfEquations(){
         int a = ran.nextInt(20) - 10;
-        while(a == 0) {
+        int a1 = ran.nextInt(20) - 10;
+        while(a == 0 || a1 == 0) {
             a = ran.nextInt(20) - 10;
+            a1 = ran.nextInt(20) - 10;
         }
         int x = ran.nextInt(20) - 10;
         int b = ran.nextInt(20) - 10;
@@ -201,17 +203,13 @@ public class Generation {
         question1 = question1 + "y";
         question1 = question1 + " = " + (a*x + b*y);
 
-        a = ran.nextInt(20) - 10;
-        while(a == 0) {
-            a = ran.nextInt(20) - 10;
-        }
         b = ran.nextInt(20) - 10;
         while(b == 0) {
             b = ran.nextInt(20) - 10;
         }
 
-        if(a != 1) {
-            question3 = a + "x";
+        if(a1 != 1) {
+            question3 = a1 + "x";
         }
         else{
             question3 = "x";
@@ -225,7 +223,7 @@ public class Generation {
             }
         }
         question3 = question3 + "y";
-        question3 = question3 + " = " + (a*x + b*y);
+        question3 = question3 + " = " + (a1*x + b*y);
         layoutQuestion3 = 115;
 
         question2 ="{";
