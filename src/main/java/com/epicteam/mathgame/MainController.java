@@ -548,12 +548,15 @@ public class MainController implements Initializable {
     public int numberOfLevels(int level){
         if(level != 0) {
             countOfPraxis.setVisible(true);
+            countOfPraxis1.setVisible(false);
             praxis = 20;
             if (level % 3 == 0) {
-                    praxis = praxis + 20;
+                praxis = praxis + 20;
+                countOfPraxis1.setVisible(true);
             }
-            if (level % 3 == 1) {
+            if (level % 3 == 2) {
                 praxis = praxis + 10;
+                countOfPraxis1.setVisible(true);
             }
             countOfPraxis1.setVisible(true);
         }

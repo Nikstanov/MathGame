@@ -173,57 +173,64 @@ public class Generation {
      * Generates a system of simple equations
      */
     protected void systemOfEquations(){
+        String someStr;
         int a = ran.nextInt(20) - 10;
         int a1 = ran.nextInt(20) - 10;
-        while((a + a1) == 0) {
+        while((a * a1) == 0) {
             a = ran.nextInt(20) - 10;
             a1 = ran.nextInt(20) - 10;
         }
         int x = ran.nextInt(20) - 10;
         int b = ran.nextInt(20) - 10;
-        while(b == 0) {
+        int b1 = ran.nextInt(20) - 10;
+        while(b * b1 == 0) {
             b = ran.nextInt(20) - 10;
+            b1 = ran.nextInt(20) - 10;
         }
         int y = ran.nextInt(20) - 10;
 
+        question1 = "x";
         if(a != 1) {
             question1 = a + "x";
         }
+
+        if(b == 1) {
+            someStr = " + ";
+        }
         else{
-            question1 = "x";
+            someStr = " - ";
         }
         if(Math.abs(b) != 1) {
             if (b < 0) {
-                question1 = question1 + " - " + -b;
+                someStr = " - " + -b;
             } else {
-                question1 = question1 + " - " + b;
-
+                someStr = " + " + b;
             }
         }
-        question1 = question1 + "y";
+        question1 = question1 + someStr + "y";
         question1 = question1 + " = " + (a*x + b*y);
 
-        b = ran.nextInt(20) - 10;
-        while(b == 0) {
-            b = ran.nextInt(20) - 10;
-        }
-
+        question3 = "x";
         if(a1 != 1) {
             question3 = a1 + "x";
         }
-        else{
-            question3 = "x";
+
+        if(b1 == 1) {
+            someStr = " + ";
         }
-        if(Math.abs(b) != 1) {
-            if (b < 0) {
-                question3 = question3 + " - " + -b;
+        else{
+            someStr = " - ";
+        }
+        if(Math.abs(b1) != 1) {
+            if (b1 < 0) {
+                someStr = " - " + -b1;
             } else {
-                question3 = question3 + " - " + b;
+                someStr = " + " + b1;
 
             }
         }
-        question3 = question3 + "y";
-        question3 = question3 + " = " + (a1*x + b*y);
+        question3 = question3 + someStr + "y";
+        question3 = question3 + " = " + (a1*x + b1*y);
         layoutQuestion3 = 115;
 
         question2 ="{";
@@ -379,6 +386,9 @@ public class Generation {
             if(a == -10){
                 layoutQuestion2 = layoutQuestion2 + 11;
             }
+        }
+        if(Math.abs(a) == 1){
+            layoutQuestion2 = layoutQuestion2 - 20;
         }
         question2 = "2";
         answer0[0] = x1 + "," + x2;
